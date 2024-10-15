@@ -79,6 +79,20 @@ a {
     text-decoration: none;
 }
 
+blockquote p {
+    font-style: italic;
+    font-weight: 200;
+}
+
+img {
+    max-width: calc(100vw - 240px);
+}
+@media (max-width: 740px) {
+    img {
+        max-width: 100%;
+    }
+}
+
 div.footnote::before {
     content: "";
     position: absolute;
