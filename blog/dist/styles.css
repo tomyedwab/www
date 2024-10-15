@@ -72,7 +72,7 @@ a {
     text-decoration: none;
 }
 
-ol.footnotes::before {
+div.footnote::before {
     content: "";
     position: absolute;
     top: 0;
@@ -81,14 +81,13 @@ ol.footnotes::before {
     height: 1px;
     background-color: #a15422;}
 
-ol.footnotes {
+div.footnote {
     position: relative;
     padding-top: 20px;
     margin-top: 64px;
     padding-left: 0;
 }
 
-ol.footnotes li {
-    
-    list-style: none;
+div.footnote hr {
+    display: none;
 }

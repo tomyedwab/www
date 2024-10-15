@@ -14,153 +14,82 @@
     <body>
         <div class="top-spacer"></div>
         <div class="title-underline">
-            <h1>
-                How I write code using Cursor: A review
-            </h1>
-            <p class="subtitle">Written: October 14, 2024</p>
-        </div>
-
-        <article>
-
-        <p>
-            In forums relating to AI and AI coding in particular, I see a common inquiry
-            from experienced software developers: Is anyone getting value out of tools like
-            Cursor, and is it worth the subscription price?
-        </p>
-
-        <p>
-            A few months into using Cursor as my daily driver for both personal
-            and work projects, I have some observations to share about whether
-            this is a "need-to-have" tool or just a passing fad, as well as
-            strategies to get the most benefit quickly which may help you if
-            you'd like to trial it. Some of you may have tried Cursor and found
-            it underwhelming, and maybe some of these suggestions might inspire
-            you to give it another try.
-        </p>
-
-
-        <p>
-            I am not sponsored by Cursor, and I am not a product reviewer. I am not
-            championing or dunking on this as a product, but rather sharing my own
-            experience with it.
-        </p>
-
-        <h2>
-            Who am I, and who is the audience for this article?
-        </h2>
-        
-        <p>
-            I have been writing code for 36 years in a number of languages, but
-            professionally focused on C-heavy computer game engines and
-            Go/Python/JS web development. I am expecting readers to be similarly
-            reasonably comfortable and productive working in large codebases,
-            writing and debugging code in their chosen language, etc. I would
-            give very different advice to novices who might want an AI to teach
-            them programming concepts or write code for them that is way beyond
-            their level!
-        </p>
-
-        <p>
-            For me, the appeal of an AI copilot is in taking care of boilerplate and
-            repetitive tasks for me so I can focus on the interesting logic for any given
-            problem. I am also not especially interested in cranking out large quantities of
-            code automatically; I am highly skeptical of "lines of code written" as an
-            efficiency metric. I would prefer to spend less time writing the same amount of
-            code and more time thinking through edge cases, maintainability, etc.
-        </p>
-
-        <p>
-            So, without further ado:
-        </p>
-
-        <h2>What is Cursor?</h2>
-
-        <p>
-            Cursor<sup><a href="#footnote-1">1</a></sup> is a fork of Visual Studio Code (VS Code) which has Large Language Model (LLM)
-            powered features integrated into the core UI. It is a proprietary product with a
-            free tier and a subscription option; however, the pricing sheet doesn't cover
-            what the actual subscriber benefits are and how they compare to competing
-            products. I'll try to clarify that when discussing the features below based on
-            my own understanding, but a quick summary:
-        </p>
-
-        <ul>
-            <li>
-                <strong>Tab completion</strong>: This is a set of proprietary fine-tuned models that both
-                provide code completion in the editor, as well as navigate to the next
-                recommended action, all triggered by the Tab key. Only available to subscribers.
-            </li>
-            <li>
-                <strong>Inline editing</strong>: This is a chat-based interface for making edits to
-                selected code with a simple diff view using a foundation model such as GPT or
-                Claude. Available to free and paid users.
-            </li>
-            <li>
-                <strong>Chat sidebar</strong>: This is also a chat-based interface for making larger edits
-                in a sidebar view, allowing more room for longer discussion, code sample
-                suggestions across multiple files, etc. using a foundation model such as GPT
-                or Claude. Available to free and paid users.
-            </li>
-            <li>
-                <strong>Composer</strong>: This is yet another chat-based interface specifically meant for
-                larger cross-codebase refactors, generating diffs for multiple files that you
-                can page through and approve, also using a foundation model such as GPT or Claude.
-                Available to free and paid users.
-            </li>
-        </ul>
-
-        <h2>Tab completion</h2>
-
-        <p>
-            TODO(tom) Experience with tab completion
-        </p>
-
-        <h2>Inline editing & chat sidebar</h2>
-
-        <p>
-            TODO(tom) Experience with inline editing & chat sidebar
-        </p>
-
-        <h2>Composer</h2>
-
-        <p>
-            TODO(tom) Experience with Composer
-        </p>
-
-        <h2>Changes to my workflow</h2>
-
-        <p>
-            TODO(tom) Changes to my workflow
-        </p>
-
-        <h2>Comparison with other LLM-powered coding tools</h2>
-
-        <p>
-            TODO(tom) add comparison with other LLM-powered coding tools
-        </p>
-
-        <ul>
-            <li>
-                [Codex](https://github.com/openai/codex)
-            </li>
-            <li>
-                [Replit](https://replit.com/site/codex)
-            </li>
-            <li>
-                [Continue.dev](https://continue.dev)
-            </li>
-            <li>
-                [GitHub CoPilot](https://copilot.github.com/)
-            </li>
-        </ul>
-
-
-        <ol class="footnotes">
-            <li id="footnote-1">
-                <sup>1</sup> See <a href="https://cursor.sh/">Cursor</a> for more information.
-            </li>
-        </ol>
-
-        </article>
+<h1>How I write code using Cursor: A review</h1>
+<p class="subtitle">Written October 14, 2024</p>
+</div>
+<article>
+<p>In forums relating to AI and AI coding in particular, I see a common inquiry
+from experienced software developers: <em>Is anyone getting value out of tools like
+Cursor, and is it worth the subscription price?</em></p>
+<p>A few months into using Cursor as my daily driver for both personal and work
+projects, I have some observations to share about whether this is a
+"need-to-have" tool or just a passing fad, as well as strategies to get the most
+benefit quickly which may help you if you'd like to trial it. Some of you may
+have tried Cursor and found it underwhelming, and maybe some of these
+suggestions might inspire you to give it another try.</p>
+<p>I am not sponsored by Cursor, and I am not a product reviewer. I am not
+championing or dunking on this as a product, but rather sharing my own
+experience with it.</p>
+<p><strong>Who am I, and who is the audience for this article?</strong></p>
+<p>I have been writing code for 36 years in a number of languages, but
+professionally focused on C-heavy computer game engines and Go/Python/JS web
+development. I am expecting readers to be similarly reasonably comfortable and
+productive working in large codebases, writing and debugging code in their
+chosen language, etc. I would give very different advice to novices who might
+want an AI to teach them programming concepts or write code for them that is way
+beyond their level!</p>
+<p>For me, the appeal of an AI copilot is in taking care of boilerplate and
+repetitive tasks for me so I can focus on the interesting logic for any given
+problem. I am also not especially interested in cranking out large quantities of
+code automatically; I am highly skeptical of "lines of code written" as an
+efficiency metric. I would prefer to spend less time writing the same amount of
+code and more time thinking through edge cases, maintainability, etc.</p>
+<p>So, without further ado:</p>
+<h2>What is Cursor?</h2>
+<p>Cursor<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is a fork of Visual Studio Code (VS Code) which has Large Language Model (LLM)
+powered features integrated into the core UI. It is a proprietary product with a
+free tier and a subscription option; however, the pricing sheet doesn't cover
+what the actual subscriber benefits are and how they compare to competing
+products. I'll try to clarify that when discussing the features below based on
+my own understanding, but a quick summary:</p>
+<ul>
+<li><strong>Tab completion</strong>: This is a set of proprietary fine-tuned models that both
+  provide code completion in the editor, as well as navigate to the next
+  recommended action, all triggered by the Tab key. Only available to subscribers.</li>
+<li><strong>Inline editing</strong>: This is a chat-based interface for making edits to
+  selected code with a simple diff view using a foundation model such as GPT or
+  Claude. Available to free and paid users.</li>
+<li><strong>Chat sidebar</strong>: This is also a chat-based interface for making larger edits
+  in a sidebar view, allowing more room for longer discussion, code sample
+  suggestions across multiple files, etc. using a foundation model such as GPT
+  or Claude. Available to free and paid users.</li>
+<li><strong>Composer</strong>: This is yet another chat-based interface specifically meant for
+  larger cross-codebase refactors, generating diffs for multiple files that you
+  can page through and approve, also using a foundation model such as GPT or Claude.
+  Available to free and paid users.</li>
+</ul>
+<h2>Tab completion</h2>
+<p>TODO(tom) Experience with tab completion</p>
+<h2>Inline editing &amp; chat sidebar</h2>
+<p>TODO(tom) Experience with inline editing &amp; chat sidebar</p>
+<h2>Composer</h2>
+<p>TODO(tom) Experience with Composer</p>
+<h2>Changes to my workflow</h2>
+<p>TODO(tom) Changes to my workflow</p>
+<h2>Comparison with other LLM-powered coding tools</h2>
+<p>TODO(tom) add comparison with other LLM-powered coding tools</p>
+<p><a href="https://github.com/openai/codex">Codex</a>
+<a href="https://replit.com/site/codex">Replit</a>
+Continue.dev
+GitHub CoPilot</p>
+</article>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>See <a href="https://cursor.sh/">Cursor</a> for more information.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
     </body>
 </html>

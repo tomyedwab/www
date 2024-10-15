@@ -1,9 +1,9 @@
-# How I write code using Cursor: A review
-Written: October 14, 2024
+__TITLE__ How I write code using Cursor: A review
+__SUBTITLE__ Written October 14, 2024
 
 In forums relating to AI and AI coding in particular, I see a common inquiry
-from experienced software developers: Is anyone getting value out of tools like
-Cursor, and is it worth the subscription price?
+from experienced software developers: *Is anyone getting value out of tools like
+Cursor, and is it worth the subscription price?*
 
 A few months into using Cursor as my daily driver for both personal and work
 projects, I have some observations to share about whether this is a
