@@ -5,6 +5,13 @@ body {
     padding-top: 100px;
     padding-right: 60px;
 }
+@media (max-width: 740px) {
+    body {
+        padding-left: 60px;
+        padding-right: 30px;
+        padding-top: 50px;
+    }
+}
 
 article {
     max-width: 500px;

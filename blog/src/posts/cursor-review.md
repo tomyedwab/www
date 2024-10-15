@@ -1,5 +1,6 @@
 __TITLE__ How I write code using Cursor: A review
 __SUBTITLE__ Written October 14, 2024
+__DESCRIPTION__ A personal review of Cursor, an LLM-powered coding tool.
 
 In forums relating to AI and AI coding in particular, I see a common inquiry
 from experienced software developers: *Is anyone getting value out of tools like

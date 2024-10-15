@@ -9,7 +9,8 @@ import xml.etree.ElementTree as etree
 
 class DocumentAttributes(object):
     def __init__(self):
-        self.title = None
+        self.title = ""
+        self.description = ""
 
 class ExtractTitleBlockProcessor(BlockProcessor):
     def __init__(self, parser, attrs):
@@ -30,6 +31,8 @@ class ExtractTitleBlockProcessor(BlockProcessor):
         for line in lines[1:]:
             if line.startswith('__SUBTITLE__'):
                 subtitles.append(line[len('__SUBTITLE__'):].strip())
+            elif line.startswith('__DESCRIPTION__'):
+                self.doc_attrs.description = line[len('__DESCRIPTION__'):].strip()
             else:
                 break
 
@@ -62,7 +65,7 @@ class ApplyTemplatePostprocesor(Postprocessor):
     def run(self, text):
         with open("blog/src/template.html", "r") as file:
             template = file.read()
-        return template.replace('$$BODY$$', text).replace('$$TITLE$$', self.doc_attrs.title)
+        return template.replace('$$BODY$$', text).replace('$$TITLE$$', self.doc_attrs.title).replace('$$DESCRIPTION$$', self.doc_attrs.description)
 
 class BlogExtension(Extension):
     def __init__(self):
