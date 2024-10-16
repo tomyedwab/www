@@ -86,6 +86,7 @@ def main(args):
         observer.schedule(TemplateHandler(), path='blog/src/template.html', recursive=False)
         observer.start()
 
+        build_all()
         print("Watching for changes in blog/src/posts/...")
         try:
             while True:
