@@ -1,6 +1,6 @@
-__TITLE__ Progress vs. the Law of Useless Numbers
-__SUBTITLE__ Written May 2, 2012
-__DESCRIPTION__ Challenges with measuring progress in software development.
+Title: Progress vs. the Law of Useless Numbers
+Subtitle: Written May 2, 2012
+Description: Challenges with measuring progress in software development.
 
 > Statistics: The science of producing unreliable facts from reliable figures. -Evan Esar
 
@@ -61,7 +61,7 @@ links with a sticky navigation header at the top of the screen) at getting users
 to the video content they are looking for? Here is some sample data from
 MixPanel:
 
-![MixPanel funnel](../images/12-05-02/MixPanel.png)
+![MixPanel funnel](../images/12-05-02/MixPanel.png){ .article-width }
 
 What you see here:
 
@@ -106,7 +106,7 @@ these pages is easier than doing them on the homepage.
 
 Here is a chart of some of our key video conversion results for topic pages:
 
-![Result statistics](../images/12-05-02/KAchart.png)
+![Result statistics](../images/12-05-02/KAchart.png){ .article-width }
 
 The columns show data for "supertopic" pages (such as Algebra), "subtopic" pages
 (such as Solving Linear Equations), and "content topic" pages (such as Finance,
