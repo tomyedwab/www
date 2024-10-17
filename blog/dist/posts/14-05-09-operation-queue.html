@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>The operation queue: A content editing pattern for JavaScript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Managing concurrent edits in a collaborative content management system.">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <div class="top-spacer"></div>
+        <div class="title-underline">
+            <h1>The operation queue: A content editing pattern for JavaScript</h1>
+            <p class="subtitle">Written May 9, 2014</p>
+        </div>
+        <article>
+<p>I recently gave a tech talk for the Khan Academy dev team describing the latest
+iteration of our infrastructure for saving edits from our content editors to the
+server. While this seems like a simple problem (doesn't Backbone already handle
+that stuff?) there are complexities when you want to support multiple
+simultaneous users and make the UI fast and responsive. I think the pattern that
+we gravitated to is a generally useful one, and this was validated by a recent
+blog post describing an almost identical solution to the same problems by the
+Dropbox team<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, (they even called it an operation queue!).
+If you're writing a client-side system for making changes to global state that
+need to be persisted to a server, this may help you skip some of the
+less-optimal steps along the path to content syncing nirvana.</p>
+<p><img alt="A screenshot of a video page on the Khan Academy site" class="article-width" src="../images/14-05-09/blog-8.png" />
+Viewing content on Khan Academy (as an admin)</p>
+<p><img alt="A screenshot of the same video page on the Khan Academy site, but all the fields are editable" class="article-width" src="../images/14-05-09/blog-9.png" />
+Editing content on Khan Academy</p>
+<h2>Responsiveness</h2>
+<p>First, some definitions. What does responsiveness mean in an editing interface?</p>
+<p>No save buttons: The user doesn't have to remember to click a button to apply
+the changes. Once the user toggles the UI to "edit" mode, all the fields are
+edit-in-place where possible and everything autosaves immediately as soon as you
+edit it. (There is always some internal opposition to autosave on the grounds of
+"users expect a Save button", but Google Docs has proven it can be done
+effectively.)</p>
+<p>Instant feedback: If something is wrong we tell the user immediately, rather
+than returning an error minutes or hours later when they try to publish their
+changes.</p>
+<p>No interruptions: The user can continue working after making changes, without
+having to wait for the data to get saved to the server. The user should only see
+a progress bar when they navigate to a different piece of content.</p>
+<h2>First pass: The Backbone Way</h2>
+<p>We started migrating over to Backbone as a Javascript framework in early 2012.
+Backbone's models are a straightforward way to handle synchronizing with the
+server and listening for property changes, and we are still using them for that
+purpose. Here is the naive way to implement an editor using Backbone's views and
+models:</p>
+<p><img alt="A diagram of an editor which loads a Backbone model using toJSON() and writing back to it with save()." class="article-width" src="../images/14-05-09/blog-1.png" /></p>
+<p>This has some issues:</p>
+<ul>
+<li>Every time the editor calls <code>save()</code>, it must wait for that save to complete
+  before issuing the command again, since multiple AJAX requests can arrive
+  out-of-order and changes will be lost.</li>
+<li>If a save fails for whatever reason, the editor must handle that in every
+  place that can trigger a <code>save()</code>.</li>
+<li>The model's internal state is only updated either when <code>save()</code> is called or
+  when the save succeeds and the server state is updated. In either case the UI
+  can be temporarily out of sync with the model state. This makes it unsafe to
+  listen for model changes and update the UI since the user may have unsaved
+  changes.</li>
+</ul>
+<h2>Second pass: Autosave</h2>
+<p>To address some of these issues, I designed a new system that would be capable
+of watching the UI for changes and automatically queuing up those changes to be
+sent to the server in the background:</p>
+<p><img alt="A diagram similar to the last, but an &quot;autosave&quot; event updates the model,
+which writes the changes to the backend" class="article-width" src="../images/14-05-09/blog-2.png" /></p>
+<p>This new Autosave component would receive a request to update a field whenever
+the UI registered a change, and add it to a queue of attributes to save for the
+model. It would encapsulate calling <code>save()</code> on each model that had changes
+queued, and be smart about merging attribute changes that were queued to reduce
+the number of AJAX calls issued.</p>
+<p>For error handling, in order to allow the user to continue working I chose to
+make the system optimistic and assume that changes being saved would succeed. If
+there was a validation error, it would be caught by the queue and shown to the
+user, and the user could clear the error by making further edits that were
+successfully saved. All this was handled in one place for all editors, and
+things were pretty good.</p>
+<h2>Watning: Collision imminent!</h2>
+<p>The problems begin when we have multiple users editing the same content at the
+same time, or one user has a tab open for a long time with stale data and then
+comes back and edits it. This leads to conflicts and data loss.</p>
+<p>Here is a simple example, where an item (which in this case just contains a list
+of children A, B, and C) is edited by both Alice and Bob at the same time:</p>
+<p><img alt="A more complex diagram where Alice and Bob both make edits to the same item.
+Bob saves last, and Alice's changes are lost." src="../images/14-05-09/blog-3.png" /></p>
+<p>Alice adds B to the item list that just contained A and saves the new list [ A,
+B ] to the server. Since Bob's item model is not updated to include the new
+child B, he sends up his own list with just A and C and now Alice's change has
+been reverted without either Alice nor Bob being notified.</p>
+<p>Now, we could require Bob's Autosave component to automatically fetch the latest
+version of the item before overwriting it, but that would neither be
+transactionally secure (because it would require multiple AJAX calls, and Alice
+could have made her changes in between those) nor would it be straightforward to
+do the merge: Bob has children A &amp; C and the server has A &amp; B, and now we have
+to write some sort of client-side merge algorithm. And, as stated before, we
+cannot easily update Bob's UI once we've received changes from the server, since
+that might erase changes he has made that have not been saved!</p>
+<p>Barring a complete rewrite, the first step is to detect when Bob is about to
+overwrite Alice's changes. It just so happens that we create a unique revision
+ID after each edit, which is stored with the item, and the client is aware of
+what revision ID it has for each piece of content. So when the <code>save()</code> is
+issued, the revision ID that is sent up is the latest revision the client got
+before the changes being saved. The server can easily compare this revision to
+the latest one it has, and return an error if they do not match:</p>
+<p><img alt="The same as the previous diagram, except that when Bob tries to save he gets
+an error." src="../images/14-05-09/blog-4.png" /></p>
+<p>Now when Bob sends up his change to the item, he includes in the JSON
+representation the ID that he thinks is current, in this case it's revision 1.
+The server looks at the latest revision - Alice's - and see's it's revision 2,
+and returns a special HTTP status code: 409/Conflict. This doesn't make Bob
+especially happy, since he knows his changes cannot be saved. At this point he
+has to reload the page and make his changes again. But the key improvement is
+that someone is made aware that data is lost, and since it's the person who just
+made the change it is easy enough for him to redo his work.</p>
+<p>Ideal? No, not really. But the correct solution requires a bit bigger change.</p>
+<h2>OperationQueue</h2>
+<p>At this point I had to give up the band-aid solutions and look at a bigger
+change. What we want is to be able to pull down the latest version and <em>play
+back</em> Bob's changes on top of Alice's so that no work is lost. So rather than
+storing the attribute values directly, we create an "operation" - a function +
+data - that can be applied to a model at any point to make the desired change.</p>
+<p>It's a subtle change:</p>
+<p><img alt="The editor diagram, except in place of a Backbone model we have an
+OperationQueue. The editor loads the data from the queue using getUIAttributes
+and writes to it using enqueueOperation." class="article-width" src="../images/14-05-09/blog-5.png" /></p>
+<p>For most fields like "title" the operation will be <code>(setAttribute, {title: X})</code>,
+or "set 'title' to 'X'" with 'title' and 'X' being stored in the operation's
+data and <code>setAttribute</code> being a generic function. But for adding or removing
+items from a list, we would store the child being added/removed and the index,
+rather than the actual list.</p>
+<p>This is how the conflict plays out now:</p>
+<p><img alt="An even more complex diagram showing Alice making changes, Bob attempting to
+save his changes (which fails) before replaying his operation on top of Alice's
+changes and saving the combined result." src="../images/14-05-09/blog-6.png" /></p>
+<p>Now Alice and Bob no longer enqueue changes to the child list directly, but
+rather enqueue two operations: (addChild, "B") and (addChild, "C"). Alice's
+operation runs first and adds B to [ A ] to make [ A, B ], and saves. Bob adds C
+to [ A ] to make [ A, C ] but his save fails immediately. The client then
+fetches Alice's new version [ A, B ], and replays the failed operation on top of
+it to make [ A, B, C ] and attempts to save again. this one succeeds, and now
+both Alice and Bob's changes have been saved. No one has lost any work!</p>
+<p>Now, since we've updated the model during the course of the save, Bob has to be
+shown the new values in case he wants to make further changes. This was a
+problem before since Bob could already have made more changes and queued them up
+to be saved, and we don't want to revert them in the UI during a refresh.
+Luckily, having those changes as operations means we can now calculate what the
+UI should look like any given moment by taking the model state (which
+corresponds to the latest server state) and applying any operations in the queue
+that have not yet been saved. This is what the getUIAttributes() method does in
+the above diagram. This gives Bob a consistent view with all the changes he's
+made even though the model underneath is always in sync with the server:</p>
+<p><img alt="Merging the results of multiple operations after a
+reload." class="article-width" src="../images/14-05-09/blog-7.png" /></p>
+<p>Even though the UI has been refreshed when the item was reloaded from the
+server, Bob's changes remain.</p>
+<p>It is important to understand that we only get as much protection from data loss
+as the operations are constructed to give - adding children is safe but if two
+users change the title of an item in different ways the first one will still be
+overwritten unless the operation does something smarter internally (like a text
+diff). Check boxes, combo boxes, and numeric fields cannot be merged and will
+always overwrite other changes. The best way to deal with this is to synchronize
+changes between all clients as soon as changes are made on the server, and at
+least we have a refresh path on the client that makes that fairly easy.</p>
+<h2>Conclusion</h2>
+<p>If you want to give this system a try yourself, feel free to check out the
+source code<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> and use it in your own projects. It's fairly well documented and
+should be really easy to get up and running. Let me know how it works for you!</p>
+<p>So far it seems like the saving infrastructure outlined here is pretty close to
+the ideal one for handling multiple users editing structured data
+asynchronously. We've had fewer reports of lost data and productivity among our
+content creators continues to increase as the tools get better. Now we can focus
+on making the editors themselves more intuitive and user-friendly. As we like to
+say at Khan Academy: Onward!</p>
+</article>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://dropbox.tech/mobile/building-carousel-part-i-how-we-made-our-networked-mobile-app-feel-fast-and-local">Building Carousel, Part I: How we made our networked mobile app feel fast
+and
+local</a>,
+Dropbox.Tech blog&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://github.com/tomyedwab/operation-queue">tomyedwab/operation-queue</a>,
+GitHub&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+    </body>
+</html>

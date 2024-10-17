@@ -24,6 +24,7 @@ p,ul,ol {
     font-style: normal;
     font-size: 13pt;
     line-height: 23pt;
+    width: 100%;
 }
 
 li {
@@ -89,6 +90,10 @@ img {
 }
 img.article-width {
     width: 100%;
+}
+img.article-centered {
+    margin: 0 auto;
+    display: block;
 }
 @media (max-width: 740px) {
     img {
