@@ -12,11 +12,11 @@ practices" advice, this article[^3] is spot-on and definitely worth a read.
 However, there's a nuance to code reviews that I haven't seen much discussion
 of.
 
-[^1]: [Code Reviews: Just Do It](https://blog.codinghorror.com/code-reviews-just-do-it/), Coding Horror.
-[^2]: [Every team needs kick-ass code
+[^1]: <sup>1</sup> [Code Reviews: Just Do It](https://blog.codinghorror.com/code-reviews-just-do-it/), Coding Horror.
+[^2]: <sup>2</sup> [Every team needs kick-ass code
 reviews](https://www.atlassian.com/blog/archives/every-team-needs-kick-ass-code-reviews),
 Atlassian Blog.
-[^3]: [Practical Lessons in Peer Code
+[^3]: <sup>3</sup> [Practical Lessons in Peer Code
 Review](https://blog.salsita.ai/practical-lessons-in-peer-code-review/), Salsita
 Blog.
 

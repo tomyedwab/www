@@ -30,7 +30,16 @@ svg#logo {
 }
 
 article {
+    position: relative;
     max-width: 500px;
+}
+
+div.annotation-pane {
+    position: absolute;
+    top: 0;
+    left: 550px;
+    width: 500px;
+    height: 100%;
 }
 
 p,ul,ol {
@@ -160,10 +169,25 @@ div.footnote {
     margin-top: 64px;
     padding-left: 0;
 }
-
 div.footnote hr {
     display: none;
 }
+div.footnote ol {
+    padding-left: 0;
+    margin: 0;
+}
+div.footnote li {
+    list-style-type: none;
+    margin: 0;
+}
+div.annotation-pane p, div.footnote p {
+    margin: 0;
+    overflow: hidden;
+}
+div.annotation-pane .footnote-backref {
+    display: none;
+}
+
 
 div.copyright {
     font-size: 12pt;
