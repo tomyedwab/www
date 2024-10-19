@@ -1,0 +1,13 @@
+- Finish cursor review post
+- Post archive
+- Copyright / footer
+- Right annotation panel
+- Sticky footnotes?
+- Progress bar
+- Image labels
+- Block quote styling
+- Code styling
+- Analytics
+- a11y review
+- browser testing
+- mobile testing
