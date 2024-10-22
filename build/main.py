@@ -7,6 +7,8 @@ import os.path
 import sys
 import xml.etree.ElementTree as etree
 
+PostMetadatas = {}
+
 class WrapInArticleTreeProcessor(Treeprocessor):
     def run(self, root):
         body_els = [
@@ -18,14 +20,22 @@ class WrapInArticleTreeProcessor(Treeprocessor):
             article.append(child)
 
 class ApplyTemplatePostprocesor(Postprocessor):
-    def __init__(self, md):
+    def __init__(self, md, post_uri):
         super().__init__(md)
+        self.post_uri = post_uri
 
     def run(self, text):
+        PostMetadatas[self.post_uri] = {
+            "uri": self.post_uri,
+            "title": self.md.Meta['title'][0],
+            "subtitle": self.md.Meta['subtitle'][0],
+            "description": self.md.Meta['description'][0],
+        }
         with open("blog/src/template.html", "r") as file:
             template = file.read()
         return (
             template
+            .replace('$$ROOT$$', "..")
             .replace('$$BODY$$', text)
             .replace('$$TITLE$$', self.md.Meta['title'][0])
             .replace('$$SUBTITLE$$', self.md.Meta['subtitle'][0])
@@ -33,9 +43,12 @@ class ApplyTemplatePostprocesor(Postprocessor):
         )
 
 class BlogExtension(Extension):
+    def __init__(self, post_uri):
+        self.post_uri = post_uri
+
     def extendMarkdown(self, md):
         md.treeprocessors.register(WrapInArticleTreeProcessor(md), 'article', 100)
-        md.postprocessors.register(ApplyTemplatePostprocesor(md), 'template', 100)
+        md.postprocessors.register(ApplyTemplatePostprocesor(md, self.post_uri), 'template', 100)
 
 def build_post(path):
     output_file = path.replace("blog/src/posts/", "blog/dist/posts/").replace(".md", ".html")
@@ -44,9 +57,30 @@ def build_post(path):
     with open(path, "r") as file:
         content = file.read()
 
-    html = markdown.markdown(content, extensions=[BlogExtension(), 'footnotes', 'meta', 'attr_list'])
+    html = markdown.markdown(content, extensions=[BlogExtension(output_file[10:]), 'footnotes', 'meta', 'attr_list'])
 
     with open(output_file, "w") as file:
+        file.write(html)
+
+def build_index():
+    post_uris = sorted(PostMetadatas.keys(), reverse=True)
+    text = "<ul class=\"post-list\">\n"
+    for post_uri in post_uris:
+        post_metadata = PostMetadatas[post_uri]
+        text += f"<li><h2><a href=\"{post_metadata['uri']}\">{post_metadata['title']}</a></h2><p class=\"subtitle\">{post_metadata['subtitle']}</p><p>{post_metadata['description']}</p></li>\n"
+    text += "</ul>\n"
+
+    with open("blog/src/template.html", "r") as file:
+        template = file.read()
+    html = (
+        template
+        .replace('$$ROOT$$', ".")
+        .replace('$$BODY$$', text)
+        .replace('$$TITLE$$', "History of posts")
+        .replace('$$SUBTITLE$$', "")
+        .replace('$$DESCRIPTION$$', "History of blog posts on the Arguing with Algorithms blog.")
+    )
+    with open("blog/dist/index.html", "w") as file:
         file.write(html)
 
 def build_all():
@@ -54,6 +88,7 @@ def build_all():
         for file in files:
             if file.endswith(".md"):
                 build_post(os.path.join(root, file))
+    build_index()
 
 def main(args):
     if args[0] == "dev":
@@ -76,6 +111,7 @@ def main(args):
             def on_modified(self, event):
                 if event.src_path.endswith('.md') and 'blog/src/posts/' in event.src_path:
                     build_post(event.src_path)
+                    build_index()
 
         class TemplateHandler(FileSystemEventHandler):
             def on_modified(self, event):

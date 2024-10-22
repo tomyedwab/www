@@ -18,6 +18,7 @@ unexpectedly changed the way I actually write my code.
 
 ![Three amazing engineers mugging for the camera](../images/13-03-14/having-fun.jpg){ .article-width }
 The exercises team might be having a little *too* much fun on this code review.
+{ .image-caption }
 
 ## Come all ye reviewers
 
@@ -70,6 +71,7 @@ the better.
 
 ![More ridiculously talented product developers being awesome](../images/13-03-14/nighttime.jpg){ .article-width }
 It's actually night-time in this photo. Such is the awesome power of teamwork at Khan Academy!
+{ .image-caption }
 
 ## Evolution of a code monkey
 

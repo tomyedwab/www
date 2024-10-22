@@ -94,6 +94,7 @@ h1 {
     font-style: normal;
     font-size: 36pt;
     margin-bottom: 12px;
+    line-height: 64px;
 }
 
 div.top-spacer {
@@ -125,7 +126,9 @@ a {
     color: #f2a524;
     text-decoration: none;
 }
-
+a:hover {
+    text-decoration: underline;
+}
 
 blockquote {
     position: relative;
@@ -203,7 +206,16 @@ div.annotation-pane .footnote-backref {
     display: none;
 }
 
-
+ul.post-list {
+    padding: 0;
+}
+ul.post-list li {
+    list-style: none;
+}
+ul.post-list li a {
+    color: #f0bb61;
+}
+    
 div.copyright {
     font-size: 12pt;
     color: #999;

@@ -16,6 +16,7 @@ solution that we've come up with in case others find it useful.
 
 ![A desk on top of a desk, alongside a chair on top of a chair](../images/14-01-03/cramped-spaces.jpg){ .article-width }
 Creative solutions for cramped spaces
+{ .image-caption }
 
 When I first arrived at Khan Academy's humble office (devs huddled around one
 long table, with the implementations team occupying the single conference room)
