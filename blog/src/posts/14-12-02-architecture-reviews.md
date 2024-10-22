@@ -20,10 +20,11 @@ Atlassian Blog.
 Review](https://blog.salsita.ai/practical-lessons-in-peer-code-review/), Salsita
 Blog.
 
-![Cat writing code on a MacBook](../images/14-12-02/cat_review.jpg){ .article-centered }
-
+![Cat writing code on a MacBook](../images/14-12-02/cat_review.jpg){ .article-width }
 My trick? Naming variables `laser_pointer` and `ball_of_yarn` to hold the
 reviewer's attention.
+{ .image-caption }
+
 
 To provide some context for what follows, here is my process when writing code.
 I may spend a while at the outset *thinking about how I want to solve a
@@ -96,13 +97,13 @@ comments a reviewer might submit for each one:
 
 ![A code review with high-level comments about code structure and
 intent.](../images/14-12-02/review-1.png){ .article-width }
-
 Review 1
+{ .image-caption }
 
 ![A code review with granular feedback about typos, style issues and
 bugs.](../images/14-12-02/review-2.png){ .article-width }
-
 Review 2
+{ .image-caption }
 
 In both cases something new is being added - in the first case a database model
 for an Error in an error monitor, and in the second a new React UI component.
