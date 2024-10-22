@@ -123,4 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", () => {
         handleResize();
     });
+
+    window.addEventListener("scroll", () => {
+        var currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (currentScroll / height) * 100;
+        document.getElementById("topProgressBar").style.width = scrolled + "%";
+    });
 });

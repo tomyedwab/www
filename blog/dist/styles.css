@@ -222,3 +222,23 @@ div.copyright {
     margin-top: 64px;
     font-style: italic;
 }
+
+/* Progress bar */
+
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+}
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #171313;
+}
+.progress-bar {
+  height: 4px;
+  background: #a15422;
+  width: 0%;
+}
