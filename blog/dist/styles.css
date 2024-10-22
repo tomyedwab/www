@@ -200,7 +200,12 @@ blockquote p {
 }
 
 img {
-    max-width: calc(100vw - 240px);
+    max-width: 1000px;
+}
+@media (max-width: 1240px) {
+    img {
+        max-width: calc(100vw - 240px);
+    }
 }
 img.article-width {
     width: 100%;
