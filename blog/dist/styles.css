@@ -12,6 +12,13 @@ body {
         padding-top: 50px;
     }
 }
+@media (max-width: 650px) {
+    body {
+        padding-left: 30px;
+        padding-right: 15px;
+        padding-top: 30px;
+    }
+}
 
 svg#logo {
     position: absolute;
@@ -28,10 +35,34 @@ svg#logo {
         height: 60px;
     }
 }
+@media (max-height: 450px) {
+    svg#logo {
+        top: 48px;
+    }
+}
+@media (max-width: 650px) {
+    svg#logo {
+        left: 12px;
+        top: 48px;
+        width: 400px;
+        height: 40px;
+    }
+}
 
 article {
     position: relative;
     max-width: 500px;
+}
+@media (max-width: 650px) {
+    article {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 650px) {
+    ul {
+        padding-left: 20px;
+    }
 }
 
 div.annotation-pane {
@@ -48,6 +79,9 @@ div.annotation-pane {
     }
 }
 
+p {
+    width: 100%;
+}
 p,ul,ol {
     font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;
@@ -55,7 +89,6 @@ p,ul,ol {
     font-style: normal;
     font-size: 13pt;
     line-height: 23pt;
-    width: 100%;
 }
 
 li {
@@ -96,10 +129,22 @@ h1 {
     margin-bottom: 12px;
     line-height: 64px;
 }
+@media (max-width: 650px) {
+    h1 {
+        font-size: 28pt;
+        line-height: 48px;
+    }
+}
 
 div.top-spacer {
     height: 146px;
 }
+@media (max-height: 450px) {
+    div.top-spacer {
+        height: 46px;
+    }
+}
+
 div.title-underline {
     position: relative;
     padding-bottom: 12px;

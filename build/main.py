@@ -96,7 +96,7 @@ def main(args):
         import http.server
         import threading
 
-        server = http.server.HTTPServer(('localhost', 8000), lambda *args: http.server.SimpleHTTPRequestHandler(*args, directory='blog/dist/'))
+        server = http.server.HTTPServer(('0.0.0.0', 8000), lambda *args: http.server.SimpleHTTPRequestHandler(*args, directory='blog/dist/'))
         server_thread = threading.Thread(target=server.serve_forever)
         server_thread.daemon = True
         server_thread.start()
