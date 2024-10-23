@@ -79,6 +79,63 @@ div.annotation-pane {
     }
 }
 
+header nav > a {
+    position: fixed;
+    top: 64px;
+    right: 8px;
+}
+header nav > a img {
+    width: 64px;
+    filter: brightness(80%);
+}
+header nav > a img:hover {
+    filter: brightness(100%);    
+}
+header nav ul {
+    position: fixed;
+    top: 128px;
+    right: 8px;
+    background-color: #110f0f;
+    visibility: hidden;
+    transition: opacity 0.3s;     
+    opacity: 0;
+    margin: 0;
+    padding: 16px 32px;
+    box-shadow: rgba(0, 0, 0, 0.1) -10px 10px 13px;
+}
+header nav ul li {
+    list-style: none;
+}
+header nav > a:hover + ul,
+header nav > a:focus + ul,
+header nav ul:hover,
+header nav:focus-within > ul {
+    visibility: visible;
+    opacity: 1;
+}
+@media (max-width: 740px) {
+    header nav > a {
+        top: 62px;
+    }
+    header nav > a img {
+        width: 48px;
+    }
+    header nav ul {
+        top: 110px;
+    }
+}
+@media (max-width: 650px) {
+    header nav > a {
+        top: 52px;
+    }
+    header nav > a img {
+        width: 32px;
+    }
+    header nav ul {
+        top: 84px;
+    }
+}
+
 p {
     width: 100%;
 }
@@ -165,6 +222,12 @@ h2 {
     font-weight: 400;
     font-style: normal;
     font-size: 20pt;
+}
+h3 {
+    font-family: "Jomolhari", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16pt;
 }
 
 a {
@@ -275,7 +338,7 @@ div.copyright {
 
 /* Progress bar */
 
-.header {
+header {
   position: fixed;
   left: 0;
   top: 0;

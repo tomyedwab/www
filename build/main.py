@@ -85,7 +85,7 @@ def build_index():
         template
         .replace('$$ROOT$$', ".")
         .replace('$$BODY$$', text)
-        .replace('$$TITLE$$', "History of posts")
+        .replace('$$TITLE$$', "Post history")
         .replace('$$SUBTITLE$$', "")
         .replace('$$DESCRIPTION$$', "History of blog posts on the Arguing with Algorithms blog.")
     )
