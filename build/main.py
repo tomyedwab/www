@@ -64,11 +64,20 @@ def build_post(path):
 
 def build_index():
     post_uris = sorted(PostMetadatas.keys(), reverse=True)
-    text = "<ul class=\"post-list\">\n"
+    text = "<article>\n<ul class=\"post-list\">\n"
     for post_uri in post_uris:
+        if post_uri.endswith("14-12-02-architecture-reviews.html"):
+            text += """
+                <li><img class="article-width" src="images/post_history.png"
+                alt="Two panel comic.  First panel, a badger in a suit sits
+                behind a desk looking at a sheet of paper, saying 'How do you
+                explain this gap in your post history?'. Second panel, a racoon
+                in a suit sits in a chair with three baby racoons on his lap,
+                saying 'well...'."></li>
+            """
         post_metadata = PostMetadatas[post_uri]
         text += f"<li><h2><a href=\"{post_metadata['uri']}\">{post_metadata['title']}</a></h2><p class=\"subtitle\">{post_metadata['subtitle']}</p><p>{post_metadata['description']}</p></li>\n"
-    text += "</ul>\n"
+    text += "</ul>\n</article>\n"
 
     with open("blog/src/template.html", "r") as file:
         template = file.read()
