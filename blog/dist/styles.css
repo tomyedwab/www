@@ -17,6 +17,7 @@ body {
         padding-left: 30px;
         padding-right: 15px;
         padding-top: 30px;
+        margin: 0;
     }
 }
 
@@ -35,17 +36,20 @@ svg#logo {
         height: 60px;
     }
 }
-@media (max-height: 450px) {
-    svg#logo {
-        top: 48px;
-    }
-}
 @media (max-width: 650px) {
     svg#logo {
         left: 12px;
         top: 48px;
         width: 400px;
         height: 40px;
+    }
+}
+@media (max-width: 430px) {
+    svg#logo {
+        left: 12px;
+        top: 18px;
+        width: 320px;
+        height: 32px;
     }
 }
 
@@ -56,6 +60,11 @@ article {
 @media (max-width: 650px) {
     article {
         max-width: 450px;
+    }
+}
+@media (max-width: 405px) {
+    article {
+        max-width: 345px;
     }
 }
 
@@ -81,7 +90,7 @@ div.annotation-pane {
 
 header nav > a {
     position: fixed;
-    top: 64px;
+    top: 18px;
     right: 8px;
 }
 header nav > a img {
@@ -93,7 +102,7 @@ header nav > a img:hover {
 }
 header nav ul {
     position: fixed;
-    top: 128px;
+    top: 86px;
     right: 8px;
     background-color: #110f0f;
     visibility: hidden;
@@ -114,25 +123,19 @@ header nav:focus-within > ul {
     opacity: 1;
 }
 @media (max-width: 740px) {
-    header nav > a {
-        top: 62px;
-    }
     header nav > a img {
         width: 48px;
     }
     header nav ul {
-        top: 110px;
+        top: 66px;
     }
 }
 @media (max-width: 650px) {
-    header nav > a {
-        top: 52px;
-    }
     header nav > a img {
         width: 32px;
     }
     header nav ul {
-        top: 84px;
+        top: 50px;
     }
 }
 
