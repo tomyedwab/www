@@ -1,5 +1,5 @@
 Title: How I write code using Cursor: A review
-Subtitle: Written October 14, 2024
+Subtitle: Written October 25, 2024
 Description: A personal review of Cursor, an LLM-powered coding tool.
 
 In forums relating to AI and AI coding in particular, I see a common inquiry
@@ -13,8 +13,8 @@ benefit quickly which may help you if you'd like to trial it. Some of you may
 have tried Cursor and found it underwhelming, and maybe some of these
 suggestions might inspire you to give it another try.
 
-I am not sponsored by Cursor, and I am not a product reviewer. I am not
-championing or dunking on this as a product, but rather sharing my own
+I am not sponsored by Cursor, and I am not a product reviewer. I am neither
+championing nor dunking on this as a product, but rather sharing my own
 experience with it.
 
 __Who am I, and who is the audience for this article?__
@@ -60,23 +60,181 @@ my own understanding, but a quick summary:
   can page through and approve, also using a foundation model such as GPT or Claude.
   Available to free and paid users.
 
-[^1]: See [Cursor](https://cursor.sh/) for more information.
+[^1]: <sup>1</sup> See [Cursor](https://cursor.sh/) for more information.
 
 ## Tab completion
 
-TODO(tom) Experience with tab completion
+While other LLM-powered coding tools focus on a chat experience, so far in my
+usage of Cursor it's the tab completion that fits most naturally into my
+day-to-day practice of coding and saves the most time. A lot of thought and
+technical research has apparently gone into this feature, so that it can not
+only suggest completions for a line, several lines, or a whole function, but it
+can also suggest the next line to go to for the next edit. What this amounts to
+is being able to make part of a change, and then auto-complete related changes
+throughout the entire file just by repeatedly pressing Tab.
 
-## Inline editing & chat sidebar
+One way to use this is as a code refactoring tool on steroids. For example,
+suppose I have a block of code with variable names in `under_score` notation
+that I want to convert to `camelCase`. It is sufficient to rename one instance
+of one variable, and then tab through all the lines that should be updated,
+including the other related variables. Many tedious, error-prone tasks can be
+automated in this way without having to write a script to do so:
 
-TODO(tom) Experience with inline editing & chat sidebar
+(TODO: Add screencast)
 
-## Composer
+Sometimes tab completion will indepedently find a bug and propose a fix. Many
+times it will suggest imports when I add a dependency in Python or Go. If I wrap
+a string in quotes, it will escape the contents appropriately. And, as with
+other tools, it can write whole functions based on just the function signature
+and optional docstring:
 
-TODO(tom) Experience with Composer
+(TODO: Add screencast)
+
+All in all, this tool feels like it is reading my mind, guessing at my next
+action, and allowing me to think less about the code and more about the
+architecture of I am building.
+
+Also worth noting: The completions are _incredibly fast_, and I never felt a delay
+waiting for a suggestion. They appear basically as soon as I stop typing. Having
+too long a wait would surely be a deal-breaker for me.
+
+So, what are my complaints with Tab completion? One is a minor annoyance:
+Sometimes I don't see the suggestion in time and continue typing, and the
+completion disappears. Once it is gone, there doesn't appear to be any way to
+get it to come back, so I have to type something else and hope.
+
+My other complaint is the exact opposite situation: Sometimes a completion is
+dead wrong, and I intentionally dismiss it. Subsequently, but very infrequently,
+I will accept a totally different completion and the previously-declined
+suggestion will quietly be applied as well. This has already caused some
+hard-to-track-down bugs because I wasn't aware the wrong logic had been
+accepted. I haven't found these cases to be frequent enough to cancel out the
+productivity boost of tab completion, but they do detract from it.
+
+## Inline editing, chat sidebar, and composer
+
+As far as I can tell, these features are all very similar in their interaction
+with a foundational model - I use Claude 3.5 Sonnet almost exclusively - and the
+variance is in the user interface.
+
+Inline editing can be invoked by selecting some code and pressing Ctrl-K/Cmd-K.
+I type in the desired changes, and get a nice diff in the file that I can accept
+or reject. I use this mostly to implement bits of code inside a function or make
+minor refactors.
+
+A good example of where this works great is if I have a loop over some tasks and
+I want to parallelize them:
+
+(TODO: Add screencast)
+
+The chat sidebar is opened with Ctrl+L/Cmd+L, and gives more real estate for a
+multi-turn conversation, though one pet peeve I have with the LLM models I've
+tested so far is they will *always* return code first, rather than ask for
+clarification if there is any ambiguity. The suggested code has an Apply button
+that will create a diff in the currently selected file. This is useful for
+larger refactors within a single file, or creating a brand new file based on the
+file I have open. If additional files are relevant they can be added manually to
+the context, but Cursor will try to guess which files are relevant based on the
+query and an index it generates in the background.
+
+Here is an example which takes an application's database API and creates a REST
+API to access it, with parameter validation and correct HTTP status codes,
+_then_ writes a client library to access that REST API:
+
+(TODO: Add screencast)
+
+As another example, here I am using the chat sidebar to convert the client
+library from Python to Go. Note how the loosely-typed Python is converted to
+well-defined struct types and idiomatic Go including error handling! This is not
+a 1:1 rewrite at all:
+
+(TODO: Add screencast)
+
+Finally, Composer is specifically meant for cross-file refactors. This is also
+the feature I use least, but provides a better user experience for reviewing
+multiple file diffs one at a time.
+
+## .cursorrules file
+
+I did not realize this feature existed until I came across it in the (in my
+opinion too minimal) documentation, but the various chat modalities always
+include the contents of a `.cursorrules` file located at the root of the
+workspace to provide additional context. I've been experimenting with using this
+to inform the LLM of the repository's coding standards, common packages, and
+other documentation.
+
+This feature might help to solve one of the big roadblocks I have observed with
+Cursor: It does not follow coding styles and patterns unless they already exist
+in the same file you are editing. For example, at Khan Academy we use a
+proprietary library [^2] for passing context between functions in Go. This is
+used for logging, HTTP requests, etc. so the LLM needs to be able to use it.
+This has been difficult in the past, but perhaps a well-written `.cursorrules`
+is a good first step.
+
+[^2]: <sup>2</sup> See [Statically typed context in Go](https://blog.khanacademy.org/statically-typed-context-in-go/), Khan Academy Blog.
+
+One current limitation is that there is only one of these files per workspace,
+so a monorepo like ours containing code in multiple languages is going to be
+more difficult to set up than a small repository with a small set of very
+consistently styled code.
+
+Also the documentation suggests that the `.cursorrules` file is only used for
+the chat modalities, not the tab completion. However I've experimented with
+having that file open in a pinned tab in the workspace and confirmed that it is
+possible to include it in the tab completion context that way at least.
 
 ## Changes to my workflow
 
-TODO(tom) Changes to my workflow
+The most exciting thing about a tool like Cursor is not that I can write code
+faster, because honestly the actual writing of code is not the bottleneck; in
+fact, I often have to slow myself down to avoid focusing too much on the code
+and not enough on the high-level problem being solved. The real value is in
+changing *how* I code.
+
+It's still early days with this technology, but this is what I've found has
+changed about how I work and what I expect to see changing in the near future:
+
+1. I am _much_ less likely to reach for a new library or a framework. No, I'm
+not going to start writing my own crypto libraries, but for small utilities it's
+easy enough to let the LLM write them to my bespoke needs than to pull in a
+general-purpose library. These libraries tend to start small and lightweight and
+then, because they are open and used by many people, accumulate functionality
+and cruft that I don't need.
+
+    Many of these libraries only exist to reduce boilerplate, which felt like a
+necessary tradeoff when balanced against my time writing and maintaining that
+boilerplate but now that I can have the LLM do it for me it feels less worth the
+cost. And the cost can be substantial: Have you tried getting a Node.js project
+running a year or more after it was written? You may as well start from scratch.
+
+2. I also worry less about adhering to DRY (Don't Repeat Yourself) in my own code.
+Prematurely defining abstractions can create a lot of technical debt later on,
+so being able to create a lot of code with reference to other code without
+trying to pull it into a function or class allows me more flexibility, and I
+know that if I have to refactor shared logic out later, the LLM can help with
+that too.
+
+3. My willingness to use a language or framework I am less familiar with is much
+higher. For example, I've dabbled in R for years, especially for visualizing
+data. However, to be frank, I suck at it. I don't have a deep understanding of
+`dplyr` and it seems like there are always a dozen different ways to accomplish
+the same task. Now I describe the visualization I want, and I get correct data
+manipulation and `ggplot` visualization for it. Tasks that took an hour or more
+now take five minutes, so I am much less likely to give up and do it in Python
+instead.
+
+    Maybe one of these days I'll even write something in Rust. Maybe.
+
+4. I find myself iterating quickly on small components before integrating them
+into the larger codebase. This is partly to work around the limitations of LLMs
+when working with larger codebases, but it also opens up interesting ways of
+working I hadn't considered before. As per the example above, I can prototype
+some logic in a dynamically typed language like Python, work out the technical
+details and then convert it to well-typed Go instantly to integrate into a web
+application. I can have the LLM generate test data automatically, or mock up a
+backend for me to write a frontend against. Why pay the tax of working in a
+mature codebase while I'm still proving out an idea?
+
 
 ## Comparison with other LLM-powered coding tools
 
