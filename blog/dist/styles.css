@@ -265,23 +265,23 @@ blockquote p {
     font-weight: 200;
 }
 
-img {
+img, video {
     max-width: 1000px;
 }
 @media (max-width: 1240px) {
-    img {
+    img, video {
         max-width: calc(100vw - 240px);
     }
 }
-img.article-width {
+img.article-width, video.article-width {
     width: 100%;
 }
-img.article-centered {
+img.article-centered, video.article-centered {
     margin: 0 auto;
     display: block;
 }
 @media (max-width: 740px) {
-    img {
+    img, video {
         max-width: 100%;
     }
 }

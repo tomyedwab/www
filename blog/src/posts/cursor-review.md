@@ -80,7 +80,13 @@ of one variable, and then tab through all the lines that should be updated,
 including the other related variables. Many tedious, error-prone tasks can be
 automated in this way without having to write a script to do so:
 
-(TODO: Add screencast)
+<video controls>
+  <source src="../videos/cursor-review/example1.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML video. Here is a
+    <a href="../videos/cursor-review/example1.webm" download="example1.webm">link to the video</a> instead.
+  </p>
+</video>
 
 Sometimes tab completion will indepedently find a bug and propose a fix. Many
 times it will suggest imports when I add a dependency in Python or Go. If I wrap
@@ -88,7 +94,13 @@ a string in quotes, it will escape the contents appropriately. And, as with
 other tools, it can write whole functions based on just the function signature
 and optional docstring:
 
-(TODO: Add screencast)
+<video controls>
+  <source src="../videos/cursor-review/example2.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML video. Here is a
+    <a href="../videos/cursor-review/example2.webm" download="example2.webm">link to the video</a> instead.
+  </p>
+</video>
 
 All in all, this tool feels like it is reading my mind, guessing at my next
 action, and allowing me to think less about the code and more about the
@@ -125,7 +137,13 @@ minor refactors.
 A good example of where this works great is if I have a loop over some tasks and
 I want to parallelize them:
 
-(TODO: Add screencast)
+<video controls>
+  <source src="../videos/cursor-review/example3.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML video. Here is a
+    <a href="../videos/cursor-review/example3.webm" download="example3.webm">link to the video</a> instead.
+  </p>
+</video>
 
 The chat sidebar is opened with Ctrl+L/Cmd+L, and gives more real estate for a
 multi-turn conversation, though one pet peeve I have with the LLM models I've
@@ -141,14 +159,26 @@ Here is an example which takes an application's database API and creates a REST
 API to access it, with parameter validation and correct HTTP status codes,
 _then_ writes a client library to access that REST API:
 
-(TODO: Add screencast)
+<video controls>
+  <source src="../videos/cursor-review/example4.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML video. Here is a
+    <a href="../videos/cursor-review/example4.webm" download="example4.webm">link to the video</a> instead.
+  </p>
+</video>
 
 As another example, here I am using the chat sidebar to convert the client
 library from Python to Go. Note how the loosely-typed Python is converted to
 well-defined struct types and idiomatic Go including error handling! This is not
 a 1:1 rewrite at all:
 
-(TODO: Add screencast)
+<video controls>
+  <source src="../videos/cursor-review/example5.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML video. Here is a
+    <a href="../videos/cursor-review/example5.webm" download="example5.webm">link to the video</a> instead.
+  </p>
+</video>
 
 Finally, Composer is specifically meant for cross-file refactors. This is also
 the feature I use least, but provides a better user experience for reviewing
@@ -235,13 +265,9 @@ application. I can have the LLM generate test data automatically, or mock up a
 backend for me to write a frontend against. Why pay the tax of working in a
 mature codebase while I'm still proving out an idea?
 
+## Summary
 
-## Comparison with other LLM-powered coding tools
-
-TODO(tom) add comparison with other LLM-powered coding tools
-
-[Codex](https://github.com/openai/codex)
-[Replit](https://replit.com/site/codex)
-Continue.dev
-GitHub CoPilot
-
+Whether I'll be using Cursor in a few years or have moved on to another tool, I
+can't really tell. I am confident that at the time of writing this, Cursor is
+the best example of the potential of LLM coding assistants, and if you want to
+explore how this type of tool might be of value I suggest you give it a spin.
