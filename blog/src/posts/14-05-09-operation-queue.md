@@ -14,7 +14,7 @@ If you're writing a client-side system for making changes to global state that
 need to be persisted to a server, this may help you skip some of the
 less-optimal steps along the path to content syncing nirvana.
 
-[^1]: [Building Carousel, Part I: How we made our networked mobile app feel fast
+[^1]: <sup>1</sup> [Building Carousel, Part I: How we made our networked mobile app feel fast
 and
 local](https://dropbox.tech/mobile/building-carousel-part-i-how-we-made-our-networked-mobile-app-feel-fast-and-local),
 Dropbox.Tech blog
@@ -210,5 +210,5 @@ content creators continues to increase as the tools get better. Now we can focus
 on making the editors themselves more intuitive and user-friendly. As we like to
 say at Khan Academy: Onward!
 
-[^2]: [tomyedwab/operation-queue](https://github.com/tomyedwab/operation-queue),
+[^2]: <sup>2</sup> [tomyedwab/operation-queue](https://github.com/tomyedwab/operation-queue),
 GitHub

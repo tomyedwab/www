@@ -327,6 +327,9 @@ ul.post-list {
 }
 ul.post-list li {
     list-style: none;
+    border-bottom: 2px solid #a15422;
+    padding-bottom: 24px;
+    padding-top: 16px;
 }
 ul.post-list li a {
     color: #f0bb61;

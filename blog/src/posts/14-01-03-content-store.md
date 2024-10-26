@@ -28,7 +28,7 @@ were the basis for everything on the site. There was no versioning, no
 organization, and no direct editing - if Sal wanted to fix a typo in a video
 title he had to do it in YouTube, and only he had access.
 
-[^1]: [Khan Academy](https://www.youtube.com/user/khanacademy/videos), YouTube.
+[^1]: <sup>1</sup> [Khan Academy](https://www.youtube.com/user/khanacademy/videos), YouTube.
 
 Fast forward a year. We have content from a half dozen content creators teaching
 math, science, and art history. We've added the concept of a topic tree to
@@ -69,7 +69,7 @@ the site is untenable. At the same time, our growing dev team is adding features
 at an ever-increasing rate, and they need something stable and flexible to build
 on.
 
-[^2]: See Joel Spolsky, [Things You Should Never Do, Part I](http://www.joelonsoftware.com/articles/fog0000000069.html).
+[^2]: <sup>2</sup> See Joel Spolsky, [Things You Should Never Do, Part I](http://www.joelonsoftware.com/articles/fog0000000069.html).
 
 When looking at various CMS storage and versioning designs, I tried to keep the
 primary user in mind. Since the infrastructure should always be invisible to
@@ -78,7 +78,7 @@ features on top of it. When it comes to versioning and deployment, developers
 are used to code versioning systems, so I opted to start with a design based
 entirely on Git[^3], a popular distributed revision control system.
 
-[^3]: See [Git](https://git-scm.com/).
+[^3]: <sup>3</sup> See [Git](https://git-scm.com/).
 
 In the context of content management on App Engine, the Git model has distinct
 advantages:
@@ -101,10 +101,10 @@ advantages:
   compare hashes for each object. This means that publish can incrementally
   update only objects that have changed, speeding up the process considerably.
 * This works equally well for rolling back to an earlier version.
-* The Git content storage filesystem model is really simple[^3] to understand and
+* The Git content storage filesystem model is really simple[^4] to understand and
   implement.
 
-[^3]: See [Git Internals - Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
+[^4]: <sup>4</sup> See [Git Internals - Git Objects](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
                   
 I didn't copy Git's design wholesale, nor did I actually expose a Git-compatible
 API (although it would be really cool to someday be able to check out our

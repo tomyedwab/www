@@ -103,7 +103,7 @@ Komalo, Craig Silverstein, and Ben Kamens[^1]) some habits that enable me to get
 useful feedback on code reviews and use that feedback effectively. Here is what
 I learned:
 
-[^1]: See [Ben Kamens](https://bjk5.com)
+[^1]: <sup>1</sup> See [Ben Kamens](https://bjk5.com) blog.
 
 * Make one conceptual change per commit. (As opposed to one functional change
   per commit.) When I started working on a change, I would often be thinking
@@ -156,8 +156,8 @@ I learned:
   a review!
 * Document everything, even if it's in progress. If I'm going to have to explain
   some complex bit of logic or a long list of method arguments to a reviewer, I
-  may as well just do it in the code itself. Even if the code has ## TEMPORARY
-  ## or // TODO(HACK) UGLY HACK all over it, it still gets documented. It never
+  may as well just do it in the code itself. Even if the code has `## TEMPORARY
+  ##` or `// TODO(HACK) UGLY HACK` all over it, it still gets documented. It never
   ceases to surprise me how long those things live in the codebase, and the
   short-term solutions are the ones that need the most explanation: Why do we
   need this? What should replace this? When can it safely be replaced?
