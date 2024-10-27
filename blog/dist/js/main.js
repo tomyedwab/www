@@ -34,7 +34,7 @@ class Annotation {
         }
         if (!this.isInSidebar) {
             this.content.remove();
-            this.content.style.clipPath = `rect(0 0 0 100%)`;
+            this.content.style.clipPath = `rect(0 100% 0 0)`;
         }
         this.content.style.position = "absolute";
         this.content.style.transition = "clip-path 0.5s, top 0.5s";
@@ -46,7 +46,7 @@ class Annotation {
         this.height = this.content.offsetHeight;
         setTimeout(() => {
             this.content.style.height = "auto";
-            this.content.style.clipPath = `rect(0 0 ${this.height}px 100%)`;
+            this.content.style.clipPath = `rect(0 100% ${this.height}px 0)`;
         }, 10);
         return targetTop + this.height;
     }
@@ -96,7 +96,6 @@ const handleResize = debounce(() => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const article = document.querySelector("article");
-    console.log("article", article);
     const annotationPane = document.createElement("div");
     annotationPane.classList.add("annotation-pane");
     article.appendChild(annotationPane);

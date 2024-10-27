@@ -92,12 +92,31 @@ def build_index():
     with open("blog/dist/index.html", "w") as file:
         file.write(html)
 
+def build_error_page(code, title, message):
+    with open("blog/src/template.html", "r") as file:
+        template = file.read()
+    html = (
+        template
+        .replace('$$ROOT$$', "..")
+        .replace('$$BODY$$', message)
+        .replace('$$TITLE$$', title)
+        .replace('$$SUBTITLE$$', "")
+        .replace('$$DESCRIPTION$$', "")
+    )
+    with open(f"blog/dist/errors/{code}.html", "w") as file:
+        file.write(html)
+
 def build_all():
     for root, dirs, files in os.walk("blog/src/posts/"):
         for file in files:
             if file.endswith(".md"):
                 build_post(os.path.join(root, file))
     build_index()
+    build_error_page(
+        404,
+        "Oops! Page not found",
+        "<p><img src=\"../images/404.png\" alt=\"404 error\"></p><p>Oh no! The page you are looking for does not exist. Maybe have a look at the <a href=\"/\">post history page</a>?</p>",
+    )
 
 def main(args):
     if args[0] == "dev":
