@@ -1,6 +1,7 @@
 Title: The operation queue: A content editing pattern for JavaScript
 Subtitle: Written May 9, 2014
 Description: Managing concurrent edits in a collaborative content management system.
+Modified: 2024-10-27
 
 I recently gave a tech talk for the Khan Academy dev team describing the latest
 iteration of our infrastructure for saving edits from our content editors to the

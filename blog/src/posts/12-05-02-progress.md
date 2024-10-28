@@ -1,6 +1,7 @@
 Title: Progress vs. the Law of Useless Numbers
 Subtitle: Written May 2, 2012
 Description: Challenges with measuring progress in software development.
+Modified: 2024-10-27
 
 > Statistics: The science of producing unreliable facts from reliable figures. -Evan Esar
 

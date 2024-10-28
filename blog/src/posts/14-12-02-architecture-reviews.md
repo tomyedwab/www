@@ -1,6 +1,7 @@
 Title: Architecture vs. Implementation Reviews
 Subtitle: Written December 2, 2014
 Description: Differentiating between two different flavors of code reviews.
+Modified: 2024-10-27
 
 In a [previous post](./13-03-14-code-reviews.html), I opined on the virtues of
 having every code change be reviewed before it gets deployed to production. That

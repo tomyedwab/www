@@ -30,6 +30,7 @@ class ApplyTemplatePostprocesor(Postprocessor):
             "title": self.md.Meta['title'][0],
             "subtitle": self.md.Meta['subtitle'][0],
             "description": self.md.Meta['description'][0],
+            "modified": self.md.Meta['modified'][0],
         }
         with open("blog/src/template.html", "r") as file:
             template = file.read()
@@ -106,12 +107,24 @@ def build_error_page(code, title, message):
     with open(f"blog/dist/errors/{code}.html", "w") as file:
         file.write(html)
 
+def build_sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">"""
+    post_uris = sorted(PostMetadatas.keys())
+    for post_uri in post_uris:
+        last_modified = PostMetadatas[post_uri]["modified"]
+        xml += f"<url>\n  <loc>https://www.arguingwithalgorithms.com/{post_uri}</loc>\n  <lastmod>{last_modified}</lastmod>\n</url>\n"
+    xml += "</urlset>"
+    with open("blog/dist/sitemap.xml", "w") as file:
+        file.write(xml)
+
 def build_all():
     for root, dirs, files in os.walk("blog/src/posts/"):
         for file in files:
             if file.endswith(".md"):
                 build_post(os.path.join(root, file))
     build_index()
+    build_sitemap()
     build_error_page(
         404,
         "Oops! Page not found",
