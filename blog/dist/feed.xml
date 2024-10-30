@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Arguing with Algorithms</title>
+  <link>https://www.arguingwithalgorithms.com</link>
+  <description>A blog about software engineering, AI and machine learning</description>
+  <language>en-us</language>
+  <copyright>Copyright 2024, Tom Yedwab</copyright>
+  <image>
+    <url>https://www.arguingwithalgorithms.com/favicon-96x96.png</url>
+    <title>Arguing with Algorithms</title>
+    <link>https://www.arguingwithalgorithms.com</link>
+    <width>96</width>
+    <height>96</height>
+  </image>
+  
+  <item>
+    <title>How I write code using Cursor: A review</title>
+    <link>https://www.arguingwithalgorithms.com/posts/cursor-review.html</link>
+    <description>A personal review of Cursor, an LLM-powered coding tool.</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>Architecture vs. Implementation Reviews</title>
+    <link>https://www.arguingwithalgorithms.com/posts/14-12-02-architecture-reviews.html</link>
+    <description>Differentiating between two different flavors of code reviews.</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>The operation queue: A content editing pattern for JavaScript</title>
+    <link>https://www.arguingwithalgorithms.com/posts/14-05-09-operation-queue.html</link>
+    <description>Managing concurrent edits in a collaborative content management system.</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>Reinventing the wheel: A new content store for Khan Academy</title>
+    <link>https://www.arguingwithalgorithms.com/posts/14-01-03-content-store.html</link>
+    <description>Writing an educational content management system from scratch, part 1</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>Implementation: A new content store for Khan Academy</title>
+    <link>https://www.arguingwithalgorithms.com/posts/14-01-03-content-implementation.html</link>
+    <description>Writing an educational content management system from scratch, part 2</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>Coding for review</title>
+    <link>https://www.arguingwithalgorithms.com/posts/13-03-14-code-reviews.html</link>
+    <description>Learning to appreciate the benefits of code reviews.</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>Going Back to Work</title>
+    <link>https://www.arguingwithalgorithms.com/posts/12-10-09-back-to-work.html</link>
+    <description>A personal story of returning to work after becoming a father.</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+  <item>
+    <title>Progress vs. the Law of Useless Numbers</title>
+    <link>https://www.arguingwithalgorithms.com/posts/12-05-02-progress.html</link>
+    <description>Challenges with measuring progress in software development.</description>
+    <pubDate>Sun, 27 Oct 2024 00:00:00 </pubDate>
+  </item>
+</channel>
+</rss>

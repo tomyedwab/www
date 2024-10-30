@@ -215,6 +215,11 @@ p,ul,ol {
     line-height: 23pt;
 }
 
+p.feed-link img {
+    vertical-align: middle;
+    padding-right: 8px;
+}
+
 li {
     margin-bottom: 16px;
 }

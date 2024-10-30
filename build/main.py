@@ -1,3 +1,4 @@
+import datetime
 import markdown
 from markdown.blockprocessors import BlockProcessor
 from markdown.extensions import Extension
@@ -65,7 +66,14 @@ def build_post(path):
 
 def build_index():
     post_uris = sorted(PostMetadatas.keys(), reverse=True)
-    text = "<article>\n<ul class=\"post-list\">\n"
+    text = """<article>
+    <p class=\"feed-link\">
+      <a href=\"feed.xml\"><img src=\"images/Feed-icon.svg\" alt=\"RSS feed\" width=\"32\" height=\"32\" />
+        Subscribe via RSS feed
+      </a>
+    </p>
+    <ul class=\"post-list\">
+    """
     for post_uri in post_uris:
         if post_uri.endswith("14-12-02-architecture-reviews.html"):
             text += """
@@ -118,6 +126,39 @@ def build_sitemap():
     with open("blog/dist/sitemap.xml", "w") as file:
         file.write(xml)
 
+def build_rss():
+    rss = """<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Arguing with Algorithms</title>
+  <link>https://www.arguingwithalgorithms.com</link>
+  <description>A blog about software engineering, AI and machine learning</description>
+  <language>en-us</language>
+  <copyright>Copyright 2024, Tom Yedwab</copyright>
+  <image>
+    <url>https://www.arguingwithalgorithms.com/favicon-96x96.png</url>
+    <title>Arguing with Algorithms</title>
+    <link>https://www.arguingwithalgorithms.com</link>
+    <width>96</width>
+    <height>96</height>
+  </image>
+  """
+    post_uris = sorted(PostMetadatas.keys(), reverse=True)
+    for post_uri in post_uris:
+        metadata = PostMetadatas[post_uri]
+        # Parse YYYY-MM-DD from modified date and convert to RFC 822 format
+        modified = datetime.datetime.strptime(metadata['modified'], "%Y-%m-%d").strftime("%a, %d %b %Y %H:%M:%S %z")
+        rss += f"""
+  <item>
+    <title>{metadata['title']}</title>
+    <link>https://www.arguingwithalgorithms.com/{post_uri}</link>
+    <description>{metadata['description']}</description>
+    <pubDate>{modified}</pubDate>
+  </item>"""
+    rss += "\n</channel>\n</rss>"
+    with open("blog/dist/feed.xml", "w") as file:
+        file.write(rss)
+
 def build_all():
     for root, dirs, files in os.walk("blog/src/posts/"):
         for file in files:
@@ -125,6 +166,7 @@ def build_all():
                 build_post(os.path.join(root, file))
     build_index()
     build_sitemap()
+    build_rss()
     build_error_page(
         404,
         "Oops! Page not found",
