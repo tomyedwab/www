@@ -152,6 +152,7 @@ header nav ul {
     position: fixed;
     top: 86px;
     right: 8px;
+    width: 320px;
     background-color: var(--color-bg-contrast);
     visibility: hidden;
     transition: opacity 0.3s;     
@@ -159,9 +160,24 @@ header nav ul {
     margin: 0;
     padding: 16px 32px;
     box-shadow: rgba(0, 0, 0, 0.1) -10px 10px 13px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 header nav ul li {
     list-style: none;
+    width: 48%;
+    text-align: center;
+}
+header nav ul li.heading {
+    width: 100%;
+}
+header nav ul li.heading h3 {
+    margin: 16px 0 0 0;
+}
+header nav ul li.icon {
+    display: inline-block;
+    width: 24%;
 }
 header nav > a:hover + ul,
 header nav > a:focus + ul,
