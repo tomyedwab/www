@@ -119,9 +119,13 @@ def build_sitemap():
     xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">"""
     post_uris = sorted(PostMetadatas.keys())
+    index_last_modified = PostMetadatas[post_uris[0]]["modified"]
     for post_uri in post_uris:
         last_modified = PostMetadatas[post_uri]["modified"]
+        if last_modified > index_last_modified:
+            index_last_modified = last_modified
         xml += f"<url>\n  <loc>https://www.arguingwithalgorithms.com/{post_uri}</loc>\n  <lastmod>{last_modified}</lastmod>\n</url>\n"
+    xml += f"<url>\n  <loc>https://www.arguingwithalgorithms.com/</loc>\n  <lastmod>{index_last_modified}</lastmod>\n</url>\n"
     xml += "</urlset>"
     with open("blog/dist/sitemap.xml", "w") as file:
         file.write(xml)
