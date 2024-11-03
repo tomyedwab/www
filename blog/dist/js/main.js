@@ -43,7 +43,7 @@ class Annotation {
             this.annotationPane.appendChild(this.content);
             this.isInSidebar = true;
         }
-        this.height = this.content.offsetHeight;
+        this.height = this.content.offsetHeight + 4;
         setTimeout(() => {
             this.content.style.height = "auto";
             this.content.style.clipPath = `rect(0 100% ${this.height}px 0)`;
