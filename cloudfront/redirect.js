@@ -19,12 +19,20 @@ function handler(event) {
     // Old posts were aliased under /blog, but we want to redirect to the new /posts/
     if (uri.startsWith("/blog/")) {
         let suffix = "";
-        if (!uri.endsWith(".html")) {
+        if (!uri.endsWith(".html") || uri.endsWith("/index.html")) {
             suffix = ".html";
         }
         return {
             statusCode: 301,
-            headers: { "location": { "value": uri.replace("/blog/", "/posts/") + suffix } },
+            headers: { "location": { "value": uri.replace("/blog/", "/posts/").replace("/index.html", "") + suffix } },
+        };
+    }
+
+    // Match anything in /posts ending in /index.html and redirect to just .html
+    if (uri.startsWith("/posts/") && uri.endsWith("/index.html")) {
+        return {
+            statusCode: 301,
+            headers: { "location": { "value": uri.replace("/index.html", ".html") } },
         };
     }
 
