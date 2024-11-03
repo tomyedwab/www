@@ -106,7 +106,7 @@ def build_error_page(code, title, message):
         template = file.read()
     html = (
         template
-        .replace('$$ROOT$$', "..")
+        .replace('$$ROOT$$', "")
         .replace('$$BODY$$', message)
         .replace('$$TITLE$$', title)
         .replace('$$SUBTITLE$$', "")
@@ -174,7 +174,7 @@ def build_all():
     build_error_page(
         404,
         "Oops! Page not found",
-        "<p><img src=\"../images/404.png\" alt=\"404 error\"></p><p>Oh no! The page you are looking for does not exist. Maybe have a look at the <a href=\"/\">post history page</a>?</p>",
+        "<p><img src=\"/images/404.png\" alt=\"404 error\"></p><p>Oh no! The page you are looking for does not exist. Maybe have a look at the <a href=\"/\">post history page</a>?</p>",
     )
 
 def main(args):
