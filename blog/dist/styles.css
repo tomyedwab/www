@@ -1,5 +1,6 @@
 :root {
     --color-bg: #171313;
+    --color-bg-translucent: #171313d0;
     --color-bg-contrast: #110f0f;
     --color-link: #f2a524;
     --color-link-desat: #f0bb61;
@@ -11,6 +12,7 @@
 @media (prefers-color-scheme: light) {
     :root {
         --color-bg: #fbf6f4;
+        --color-bg-translucent: #fbf6f4d0;
         --color-bg-contrast: #fff8f4;
         --color-link: #9d411d;
         --color-link-desat: #93471a;
@@ -138,8 +140,12 @@ div.annotation-pane {
 
 header nav > a {
     position: fixed;
-    top: 18px;
-    right: 8px;
+    top: 14px;
+    right: 4px;
+    text-align: center;
+    background-color: var(--color-bg-translucent);
+    border-radius: 12px;
+    padding: 8px;
 }
 header nav > a img {
     width: 64px;
@@ -148,9 +154,12 @@ header nav > a img {
 header nav > a img:hover {
     filter: brightness(100%);    
 }
+header nav > a label {
+    display: block;
+}
 header nav ul {
     position: fixed;
-    top: 86px;
+    top: 117px;
     right: 8px;
     width: 320px;
     background-color: var(--color-bg-contrast);
@@ -191,7 +200,7 @@ header nav:focus-within > ul {
         width: 48px;
     }
     header nav ul {
-        top: 66px;
+        top: 101px;
     }
 }
 @media (max-width: 650px) {
@@ -199,7 +208,7 @@ header nav:focus-within > ul {
         width: 32px;
     }
     header nav ul {
-        top: 50px;
+        top: 85px;
     }
 }
 
