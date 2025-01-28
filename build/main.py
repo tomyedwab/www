@@ -138,7 +138,7 @@ def build_rss():
   <link>https://www.arguingwithalgorithms.com</link>
   <description>A blog about software engineering, AI and machine learning</description>
   <language>en-us</language>
-  <copyright>Copyright 2024, Tom Yedwab</copyright>
+  <copyright>Copyright 2025, Tom Yedwab</copyright>
   <image>
     <url>https://www.arguingwithalgorithms.com/favicon-96x96.png</url>
     <title>Arguing with Algorithms</title>
