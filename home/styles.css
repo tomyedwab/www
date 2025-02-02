@@ -1,0 +1,245 @@
+:root {
+    --color-bg: #171313;
+    --color-bg-translucent: #171313d0;
+    --color-bg-contrast: #110f0f;
+    --color-link: #f2a524;
+    --color-link-desat: #f0bb61;
+    --color-highlight: #a15422;
+    --color-fg: #fcfbfb;
+    --color-fg-mid: #999;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-bg: #fbf6f4;
+        --color-bg-translucent: #fbf6f4d0;
+        --color-bg-contrast: #fff8f4;
+        --color-link: #9d411d;
+        --color-link-desat: #93471a;
+        --color-highlight: #d79469;
+        --color-fg: #533131;
+        --color-fg-mid: #888282;
+    }
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    padding-left: 120px;
+    padding-top: 100px;
+    padding-right: 60px;
+}
+@media (max-width: 740px) {
+    body {
+        padding-left: 60px;
+        padding-right: 30px;
+        padding-top: 50px;
+    }
+}
+@media (max-width: 650px) {
+    body {
+        padding-left: 30px;
+        padding-right: 15px;
+        padding-top: 30px;
+        margin: 0;
+    }
+}
+
+
+article {
+    position: relative;
+    max-width: 500px;
+}
+@media (max-width: 650px) {
+    article {
+        max-width: 450px;
+    }
+}
+@media (max-width: 405px) {
+    article {
+        max-width: 345px;
+    }
+}
+
+@media (max-width: 650px) {
+    ul {
+        padding-left: 20px;
+    }
+}
+
+header img {
+    position: absolute;
+    height: 280px;
+    top: 0;
+    left: 62px;
+}
+@media (max-width: 740px) {
+    header img {
+        height: 230px;
+        left: 15px;
+    }
+}
+@media (max-width: 650px) {
+    header img {
+        height: 200px;
+        left: -18px;
+    }
+}
+
+article nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+article nav ul li {
+    list-style: none;
+    padding: 0 6px;
+    text-align: center;
+}
+article nav ul li.heading {
+    width: 100%;
+}
+article nav ul li.heading h3 {
+    margin: 16px 0 0 0;
+}
+article nav ul li.icon {
+    display: inline-block;
+    max-width: 70px;
+}
+@media (max-width: 740px) {
+    article nav > a img {
+        width: 48px;
+    }
+    article nav ul {
+        top: 101px;
+    }
+}
+@media (max-width: 650px) {
+    article nav > a img {
+        width: 32px;
+    }
+    article nav ul {
+        top: 85px;
+    }
+}
+
+p {
+    width: 100%;
+}
+p:target, li:target {
+    border: 2px solid var(--color-highlight);
+    border-radius: 4px;
+}
+
+p,ul,ol {
+    font-family: "Inter Tight", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13pt;
+    line-height: 23pt;
+}
+
+p.feed-link img {
+    vertical-align: middle;
+    padding-right: 8px;
+}
+
+li {
+    margin-bottom: 16px;
+}
+
+p.subtitle {
+    font-size: 12pt;
+    font-style: italic;
+    color: var(--color-fg-mid);
+    margin-bottom: 12px;
+}
+
+p.image-caption {
+    font-size: 12pt;
+    font-style: italic;
+    font-weight: 200;
+    text-align: center;
+}
+
+code {
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12pt;
+}
+
+strong {
+    font-weight: 600;
+}
+
+h1 {
+    font-family: "Jomolhari", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 36pt;
+    margin-bottom: 12px;
+    line-height: 64px;
+}
+@media (max-width: 650px) {
+    h1 {
+        font-size: 28pt;
+        line-height: 48px;
+    }
+}
+
+div.top-spacer {
+    height: 146px;
+}
+@media (max-height: 450px) {
+    div.top-spacer {
+        height: 46px;
+    }
+}
+
+div.title-underline {
+    position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 64px;
+}
+div.title-underline::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 1px;
+    background-color: var(--color-highlight);
+}
+
+h2 {
+    font-family: "Jomolhari", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20pt;
+}
+h3 {
+    font-family: "Jomolhari", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16pt;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+div.copyright {
+    font-size: 12pt;
+    color: var(--color-fg-mid);
+    margin-top: 64px;
+    font-style: italic;
+}
