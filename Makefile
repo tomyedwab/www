@@ -11,5 +11,7 @@ deploy-test: build
 	aws cloudfront create-invalidation --distribution-id E3C0VVOQVZ16WG --paths "/*"
 
 deploy: build
-	aws s3 sync ./blog/dist s3://www-arguingwithalgorithms-com/
-	aws cloudfront create-invalidation --distribution-id E2WF3223JW9X0E --paths "/*"
+	#aws s3 sync ./blog/dist s3://www-arguingwithalgorithms-com/
+	#aws cloudfront create-invalidation --distribution-id E2WF3223JW9X0E --paths "/*"
+	aws s3 sync ./home s3://www-tomyedwab-com/
+	aws cloudfront create-invalidation --distribution-id E242EZM2WIQH99 --paths "/*"
