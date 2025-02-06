@@ -1,7 +1,7 @@
 Title: The Eighteen Hour Application: The Project AI Made Possible
-Subtitle: Written January 27, 2025
+Subtitle: Written Febraury 5, 2025
 Description: How I used AI tools to write a personal application from scratch in 18 hours.
-Modified: 2025-01-27
+Modified: 2025-02-05
 
 If you are reading this in February 2025, you are probably wrong about the
 impact AI coding tools (a.k.a. Large Language Models instructed to imitate
@@ -12,28 +12,38 @@ tests or fewer bugs. While some experienced coders will look at these tools and
 say "So what?" or dismiss them as usurping the enjoyable parts of our work, I
 see opportunities to tackle projects in a whole new way, or tackle projects that
 otherwise wouldn't have happened at all. But strong claims require strong
-evidence, and I went looking for a project that I could take on that I wouldn't
-have considered before the advent of AI tools.
+evidence, and so I went looking for a project that I could take on that I
+wouldn't have considered before the advent of AI tools.
 
 For this project I gave myself just one week and a small number of tools:
 
-- Aider, a command-line tool that generates a whole commit for each prompt. I've
+- Aider[^1], a command-line tool that generates a whole commit for each prompt. I've
   found Aider to be very useful when starting a green-field project, as there
   aren't many files and technical details to get bogged down in. I think of this
   as the "rough carving" phase of creating a sculpture: the details aren't going
   to be correct, but I can make large changes, evaluate, and iterate.
-- Cursor, a full-fledged IDE that supports multiple modalities from inline
+- Cursor[^2], a full-fledged IDE that supports multiple modalities from inline
   autocomplete-style suggestions to focused code edits to the new fully agentic
   Composer mode. This has become even more powerful than it was when I last
-  wrote about it in October.
-- ComfyUI using Flux Schnell, a diffusion-based image model that I can run
+  wrote about it in October[^3].
+- ComfyUI using Flux Schnell[^4], a diffusion-based image model that I can run
   locally to quickly generate UI mock-ups or icons.
 
-So here is my project: I've wanted a custom To Do List application for my own
-exclusive use for a while. Alright, you can stop laughing now, I am aware that
-a million of these exist. I do have bespoke requirements, and as this thing is
-designed just for me, I figured if I could get a Minimum Viable Product done
-within one week it would be worth my while.
+[^1]: <sup>1</sup> See [Aider](https://www.aider.chat/) for more information.
+[^2]: <sup>2</sup> See [Cursor](https://www.cursor.com/) for more information.
+[^3]: <sup>3</sup> Read my earlier blog post: [How I write code using Cursor: A review](/posts/cursor-review.html).
+[^4]: <sup>4</sup> See [ComfyUI on
+GitHub](https://github.com/comfyanonymous/ComfyUI) and instructions for running
+[Flux](https://comfyanonymous.github.io/ComfyUI_examples/flux/). NB: The way you
+import a workflow is to _drag the image from the web page onto the ComfyUI
+window_, which has to take the cake as the least intuitive way to load a
+template I have ever seen.
+
+So here is my project: I've wanted a custom cloud-based To Do List application
+for my own exclusive use for a while. Alright, you can stop laughing now, I am
+aware that a million of these exist. I do have bespoke requirements, and as this
+thing is designed just for me, I figured if I could get a Minimum Viable Product
+done within one week it would be worth my while.
 
 The most critical requirement for projects like this is getting something to a
 deployed state quickly. Why is this important? Because frankly, most nights I
@@ -71,13 +81,12 @@ So, what am I taking away from this experience?
 
 __1. The bar for starting a project is much lower than it was.__
 
-This is true not just for my personal projects, but I expect that to
-increasingly apply at work as well: What tools, features, and quality-of-life
-improvements are suddenly feasible that were previously infeasible? What
-technical debt can we now more easily pay down, which will speed up future
-development even more? My bet is that this re-investment is going to pay bigger
-productivity dividends than just adopting AI tools but continuing to work on the
-same projects.
+This is true not just for my personal projects, but I expect it to increasingly
+apply at work as well: What tools, features, and quality-of-life improvements
+are suddenly feasible that were previously infeasible? What technical debt can
+we now more easily pay down, which will speed up future development even more?
+My bet is that this re-investment is going to pay bigger productivity dividends
+than just adopting AI tools but continuing to work on the same projects.
 
 __2. There may not (yet) be one magic AI tool.__
 
@@ -85,9 +94,9 @@ Even when they use the same foundational model - in this case, Claude Sonnet -
 different tools can be more or less effective at the same task. For at least the
 near future, I expect to invest both time and money in two or three different
 tools and switch between them depending on their capabilities and ergonomics. In
-this case that meant starting with Aider's workflow, and when it started to
-struggle with the size and complexity of the codebase, switch to Cursor's
-human-in-the-loop code generation.
+this case that meant starting with Aider's relatively hands-off workflow, and
+when it started to struggle with the size and complexity of the codebase, switch
+to Cursor's human-in-the-loop code generation.
 
 __3. Tasks that I would have avoided like the plague, I can now offload to AI.__
 
@@ -187,7 +196,7 @@ The backend framework was pulled in as an application-agnostic package. I don't
 consider this to be "cheating" because I could have pulled in an existing
 library rather than my own, and it didn't implement any of the application's
 business logic. If anything, it is more impressive that Aider was able to build
-new data models using just my hand-written one as a prototype.
+new data models using just my hand-written example as a prototype.
 
 In this stretch about 2/3 of the commits were written by Aider, and at the end
 of 4 hours I had a fully working backend for all the MVP functionality.
@@ -196,13 +205,13 @@ _Hours 5-9:_
 
 - Web application deployment to AWS S3
 - Load balancer set up in CloudFront
-- Auth0 authentication in load balancer
-- Redirect to login page with webview on Android
+- Auth0 authentication using a Lambda@Edge function
+- Handle login redirect using a webview on Android
 
 This was the time-consuming part of the project, and a lot of it was done using
 "click-ops" (read: repeatedly bashing CloudFront, Route53, S3, Lambda, and IAM
-with a blunt instrument until it gave in and did what I wanted). There were a
-few commits during this period and about a third were created by Aider.
+with a blunt instrument until they gave in and did what I wanted). There were a
+few commits during this period and about a third of these were created by Aider.
 
 _Hour 10:_
 
@@ -213,7 +222,7 @@ _Hour 10:_
 It was at this point in the project that Aider started to hallucinate badly,
 making changes to the Dart code that simply wouldn't compile, or breaking
 backend logic in the process of implementing new logic. All of the code changes
-from this point on where done in Cursor.
+from this point on therefore where done in Cursor.
 
 Looking through diffusion model-generated UI mock-ups is a bit like scrolling
 through Pinterest as seen through a broken kaleidoscope, but my favorite generation was this one:
@@ -256,9 +265,10 @@ _Hours 17-18:_
 Were I an expert in Flutter, I definitely would not have allowed Claude to make
 so many attempts to get the scrolling behavior of my task list correct. It was
 able to get scroll-while-dragging to work, or it was able to keep the "New task"
-input attached to the bottom of the view, but never both. Eventually I asked
-deepseek-r1 to give it a try and after writing me a heart-wrenching novel of
-trust and betrayal, it did in fact deliver a working widget tree.
+input attached to the bottom of the view, but never both at the same time.
+Eventually I asked deepseek-r1 to give it a try and after writing me a
+heart-wrenching novel of love and betrayal, it did in fact deliver a working
+widget tree.
 
 As far as the layout across platforms, Flutter does have the flexibility to make
 reasonably responsive UIs, but the cost is still a web layout that looks
@@ -266,9 +276,9 @@ incongruously like an Android app on the desktop and will never really function
 like a webpage. For example, simple text selection doesn't work without
 additional plugins!
 
-In the future, I might consider building the app in Flutter and then using
-Claude to rewrite it in Javascript for web; this is probably something it would
-be very adept at.
+In the future, I might consider building the mobile app in Flutter and then
+using Claude to rewrite it in Javascript for web; this is probably something it
+would be very adept at.
 
 Here is the final layout, which IMO looks great on a tablet at least:
 
@@ -276,7 +286,10 @@ Here is the final layout, which IMO looks great on a tablet at least:
 
 _Total time:_ 17 hrs 23 min.
 
-_Commits:_ 137, 64 by Aider.
+_Commits:_ 137 total, of which 64 were written by Aider.
 
 _Cost:_ $6.82 in Anthropic API credits + $20 monthly Cursor Pro subscription.
 
+I doubt anyone is going to be interested in the resulting code, but if you're
+dedicated enough to still be reading this post, you can find it on
+[GitHub](https://github.com/tomyedwab/yellowstone).

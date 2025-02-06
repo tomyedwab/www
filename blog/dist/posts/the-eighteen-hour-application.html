@@ -150,7 +150,7 @@
         <div class="top-spacer"></div>
         <div class="title-underline">
             <h1>The Eighteen Hour Application: The Project AI Made Possible</h1>
-            <p class="subtitle">Written January 27, 2025</p>
+            <p class="subtitle">Written Febraury 5, 2025</p>
         </div>
         <article>
 <p>If you are reading this in February 2025, you are probably wrong about the
@@ -162,27 +162,27 @@ tests or fewer bugs. While some experienced coders will look at these tools and
 say "So what?" or dismiss them as usurping the enjoyable parts of our work, I
 see opportunities to tackle projects in a whole new way, or tackle projects that
 otherwise wouldn't have happened at all. But strong claims require strong
-evidence, and I went looking for a project that I could take on that I wouldn't
-have considered before the advent of AI tools.</p>
+evidence, and so I went looking for a project that I could take on that I
+wouldn't have considered before the advent of AI tools.</p>
 <p>For this project I gave myself just one week and a small number of tools:</p>
 <ul>
-<li>Aider, a command-line tool that generates a whole commit for each prompt. I've
+<li>Aider<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, a command-line tool that generates a whole commit for each prompt. I've
   found Aider to be very useful when starting a green-field project, as there
   aren't many files and technical details to get bogged down in. I think of this
   as the "rough carving" phase of creating a sculpture: the details aren't going
   to be correct, but I can make large changes, evaluate, and iterate.</li>
-<li>Cursor, a full-fledged IDE that supports multiple modalities from inline
+<li>Cursor<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, a full-fledged IDE that supports multiple modalities from inline
   autocomplete-style suggestions to focused code edits to the new fully agentic
   Composer mode. This has become even more powerful than it was when I last
-  wrote about it in October.</li>
-<li>ComfyUI using Flux Schnell, a diffusion-based image model that I can run
+  wrote about it in October<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</li>
+<li>ComfyUI using Flux Schnell<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>, a diffusion-based image model that I can run
   locally to quickly generate UI mock-ups or icons.</li>
 </ul>
-<p>So here is my project: I've wanted a custom To Do List application for my own
-exclusive use for a while. Alright, you can stop laughing now, I am aware that
-a million of these exist. I do have bespoke requirements, and as this thing is
-designed just for me, I figured if I could get a Minimum Viable Product done
-within one week it would be worth my while.</p>
+<p>So here is my project: I've wanted a custom cloud-based To Do List application
+for my own exclusive use for a while. Alright, you can stop laughing now, I am
+aware that a million of these exist. I do have bespoke requirements, and as this
+thing is designed just for me, I figured if I could get a Minimum Viable Product
+done within one week it would be worth my while.</p>
 <p>The most critical requirement for projects like this is getting something to a
 deployed state quickly. Why is this important? Because frankly, most nights I
 have an hour or two for side projects after the kids go to bed, and as the weeks
@@ -214,21 +214,20 @@ application on my own server with both fully functional web and Android clients,
 which I could then embellish with new features over time.</p>
 <p>So, what am I taking away from this experience?</p>
 <p><strong>1. The bar for starting a project is much lower than it was.</strong></p>
-<p>This is true not just for my personal projects, but I expect that to
-increasingly apply at work as well: What tools, features, and quality-of-life
-improvements are suddenly feasible that were previously infeasible? What
-technical debt can we now more easily pay down, which will speed up future
-development even more? My bet is that this re-investment is going to pay bigger
-productivity dividends than just adopting AI tools but continuing to work on the
-same projects.</p>
+<p>This is true not just for my personal projects, but I expect it to increasingly
+apply at work as well: What tools, features, and quality-of-life improvements
+are suddenly feasible that were previously infeasible? What technical debt can
+we now more easily pay down, which will speed up future development even more?
+My bet is that this re-investment is going to pay bigger productivity dividends
+than just adopting AI tools but continuing to work on the same projects.</p>
 <p><strong>2. There may not (yet) be one magic AI tool.</strong></p>
 <p>Even when they use the same foundational model - in this case, Claude Sonnet -
 different tools can be more or less effective at the same task. For at least the
 near future, I expect to invest both time and money in two or three different
 tools and switch between them depending on their capabilities and ergonomics. In
-this case that meant starting with Aider's workflow, and when it started to
-struggle with the size and complexity of the codebase, switch to Cursor's
-human-in-the-loop code generation.</p>
+this case that meant starting with Aider's relatively hands-off workflow, and
+when it started to struggle with the size and complexity of the codebase, switch
+to Cursor's human-in-the-loop code generation.</p>
 <p><strong>3. Tasks that I would have avoided like the plague, I can now offload to AI.</strong></p>
 <p>One specific example is mocking data: I like to start building my UIs against a
 fully static mock API embedded in the client, so I can iterate on the API
@@ -311,20 +310,20 @@ locally mocked data:</p>
 consider this to be "cheating" because I could have pulled in an existing
 library rather than my own, and it didn't implement any of the application's
 business logic. If anything, it is more impressive that Aider was able to build
-new data models using just my hand-written one as a prototype.</p>
+new data models using just my hand-written example as a prototype.</p>
 <p>In this stretch about 2/3 of the commits were written by Aider, and at the end
 of 4 hours I had a fully working backend for all the MVP functionality.</p>
 <p><em>Hours 5-9:</em></p>
 <ul>
 <li>Web application deployment to AWS S3</li>
 <li>Load balancer set up in CloudFront</li>
-<li>Auth0 authentication in load balancer</li>
-<li>Redirect to login page with webview on Android</li>
+<li>Auth0 authentication using a Lambda@Edge function</li>
+<li>Handle login redirect using a webview on Android</li>
 </ul>
 <p>This was the time-consuming part of the project, and a lot of it was done using
 "click-ops" (read: repeatedly bashing CloudFront, Route53, S3, Lambda, and IAM
-with a blunt instrument until it gave in and did what I wanted). There were a
-few commits during this period and about a third were created by Aider.</p>
+with a blunt instrument until they gave in and did what I wanted). There were a
+few commits during this period and about a third of these were created by Aider.</p>
 <p><em>Hour 10:</em></p>
 <ul>
 <li>Backend Docker deployment</li>
@@ -334,7 +333,7 @@ few commits during this period and about a third were created by Aider.</p>
 <p>It was at this point in the project that Aider started to hallucinate badly,
 making changes to the Dart code that simply wouldn't compile, or breaking
 backend logic in the process of implementing new logic. All of the code changes
-from this point on where done in Cursor.</p>
+from this point on therefore where done in Cursor.</p>
 <p>Looking through diffusion model-generated UI mock-ups is a bit like scrolling
 through Pinterest as seen through a broken kaleidoscope, but my favorite generation was this one:</p>
 <p><img alt="Theme mock-up from Flux Schnell" class="article-width" src="../images/15-01-27/mock1.png" /></p>
@@ -368,23 +367,49 @@ appropriate. This was my favorite of the generated icon designs:</p>
 <p>Were I an expert in Flutter, I definitely would not have allowed Claude to make
 so many attempts to get the scrolling behavior of my task list correct. It was
 able to get scroll-while-dragging to work, or it was able to keep the "New task"
-input attached to the bottom of the view, but never both. Eventually I asked
-deepseek-r1 to give it a try and after writing me a heart-wrenching novel of
-trust and betrayal, it did in fact deliver a working widget tree.</p>
+input attached to the bottom of the view, but never both at the same time.
+Eventually I asked deepseek-r1 to give it a try and after writing me a
+heart-wrenching novel of love and betrayal, it did in fact deliver a working
+widget tree.</p>
 <p>As far as the layout across platforms, Flutter does have the flexibility to make
 reasonably responsive UIs, but the cost is still a web layout that looks
 incongruously like an Android app on the desktop and will never really function
 like a webpage. For example, simple text selection doesn't work without
 additional plugins!</p>
-<p>In the future, I might consider building the app in Flutter and then using
-Claude to rewrite it in Javascript for web; this is probably something it would
-be very adept at.</p>
+<p>In the future, I might consider building the mobile app in Flutter and then
+using Claude to rewrite it in Javascript for web; this is probably something it
+would be very adept at.</p>
 <p>Here is the final layout, which IMO looks great on a tablet at least:</p>
 <p><img alt="Tablet layout in Android and task labels" class="article-width" src="../images/15-01-27/day9.png" /></p>
 <p><em>Total time:</em> 17 hrs 23 min.</p>
-<p><em>Commits:</em> 137, 64 by Aider.</p>
+<p><em>Commits:</em> 137 total, of which 64 were written by Aider.</p>
 <p><em>Cost:</em> $6.82 in Anthropic API credits + $20 monthly Cursor Pro subscription.</p>
+<p>I doubt anyone is going to be interested in the resulting code, but if you're
+dedicated enough to still be reading this post, you can find it on
+<a href="https://github.com/tomyedwab/yellowstone">GitHub</a>.</p>
 </article>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><sup>1</sup> See <a href="https://www.aider.chat/">Aider</a> for more information.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><sup>2</sup> See <a href="https://www.cursor.com/">Cursor</a> for more information.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><sup>3</sup> Read my earlier blog post: <a href="/posts/cursor-review.html">How I write code using Cursor: A review</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p><sup>4</sup> See <a href="https://github.com/comfyanonymous/ComfyUI">ComfyUI on
+GitHub</a> and instructions for running
+<a href="https://comfyanonymous.github.io/ComfyUI_examples/flux/">Flux</a>. NB: The way you
+import a workflow is to <em>drag the image from the web page onto the ComfyUI
+window</em>, which has to take the cake as the least intuitive way to load a
+template I have ever seen.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
         <div class="copyright">&copy; 2025 Tom Yedwab</div>
     </body>
 </html>
