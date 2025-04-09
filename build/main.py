@@ -65,7 +65,7 @@ def build_post(path):
         file.write(html)
 
 def build_index():
-    post_uris = sorted(PostMetadatas.keys(), reverse=True)
+    post_uris = sorted(PostMetadatas.keys(), key=lambda uri: PostMetadatas[uri]["modified"] + uri, reverse=True)
     text = """<article>
     <p class=\"feed-link\">
       <a href=\"feed.xml\"><img src=\"images/Feed-icon.svg\" alt=\"RSS feed\" width=\"32\" height=\"32\" />
@@ -147,7 +147,7 @@ def build_rss():
     <height>96</height>
   </image>
   """
-    post_uris = sorted(PostMetadatas.keys(), reverse=True)
+    post_uris = sorted(PostMetadatas.keys(), key=lambda uri: PostMetadatas[uri]["modified"] + uri, reverse=True)
     for post_uri in post_uris:
         metadata = PostMetadatas[post_uri]
         # Parse YYYY-MM-DD from modified date and convert to RFC 822 format
