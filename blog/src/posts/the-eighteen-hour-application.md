@@ -1,4 +1,4 @@
-Title: The Eighteen Hour Application: The Project AI Made Possible
+Title: The eighteen hour application: The project AI made possible
 Subtitle: Written Febraury 5, 2025
 Description: How I used AI tools to write a personal application from scratch in 18 hours.
 Modified: 2025-02-05

@@ -15,13 +15,19 @@
   </image>
   
   <item>
+    <title>How to keep your AI coding agent from going rogue</title>
+    <link>https://www.arguingwithalgorithms.com/posts/technical-design-spec-pattern.html</link>
+    <description>Complete agentic LLM coding projects reliably with this proven workflow.</description>
+    <pubDate>Fri, 20 Jun 2025 00:00:00 </pubDate>
+  </item>
+  <item>
     <title>Overcoming the legacy roadblock</title>
     <link>https://www.arguingwithalgorithms.com/posts/legacy-codebases.html</link>
     <description>Legacy codebases are the bane of AI tools. How can we overcome this?</description>
     <pubDate>Tue, 08 Apr 2025 00:00:00 </pubDate>
   </item>
   <item>
-    <title>The Eighteen Hour Application: The Project AI Made Possible</title>
+    <title>The eighteen hour application: The project AI made possible</title>
     <link>https://www.arguingwithalgorithms.com/posts/the-eighteen-hour-application.html</link>
     <description>How I used AI tools to write a personal application from scratch in 18 hours.</description>
     <pubDate>Wed, 05 Feb 2025 00:00:00 </pubDate>

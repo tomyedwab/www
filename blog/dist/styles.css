@@ -259,6 +259,15 @@ code {
     font-style: normal;
     font-size: 12pt;
 }
+pre {
+    background-color: rgba(128, 128, 128, 0.1);
+    font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 12pt;
+    overflow-x: scroll;
+}
 
 strong {
     font-weight: 600;
@@ -270,6 +279,7 @@ h1 {
     font-style: normal;
     font-size: 36pt;
     margin-bottom: 12px;
+    max-width: 800px;
     line-height: 64px;
 }
 @media (max-width: 650px) {

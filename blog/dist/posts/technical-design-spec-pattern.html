@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>How to keep your AI coding agent from going rogue</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Complete agentic LLM coding projects reliably with this proven workflow.">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="../feed.xml">
+        <link href="https://fonts.googleapis.com/css2?family=Jomolhari&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../styles.css">
+        <script src="../js/main.js"></script>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="19487762-1974-4707-a3c5-ad8da27458d0"></script>
+    </head>
+    <body>
+    <svg id="logo" viewBox="0 0 200 20" version="1.1"
+        aria-label="ARGUING with ALGORITHMS"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <defs id="defs2">
+        <linearGradient inkscape:collect="always" id="linearGradient942">
+        <stop style="stop-opacity:1;" offset="0" id="stop938" />
+        <stop style="stop-opacity:0.34254619;" offset="1" id="stop940" />
+        </linearGradient>
+        <linearGradient inkscape:collect="always" xlink:href="#linearGradient942" id="linearGradient944"
+        x1="13.658406" y1="54.117138" x2="642.08533" y2="54.117138"
+        gradientUnits="userSpaceOnUse" />
+    </defs>
+    <g id="text">
+        <rect
+            style="fill:#d7d8e1;fill-opacity:0;stroke-width:0.264583;stroke-opacity:1"
+            width="12.2391" height="15.432806" x="1.7028282" y="0.86964619" id="logorect1" />
+        <rect
+            style="fill:#d7d8e1;fill-opacity:0;stroke-width:0.264583;stroke-opacity:1"
+            width="12.2391" height="15.432806" x="87.027374" y="0.97535998" id="logorect2" />
+        <g
+            transform="matrix(0.26458333,0,0,0.26458333,-1.1114713,-5.6130425)"
+            style="font-size:53.3333px;white-space:pre;shape-inside:url(#rect113);display:inline;fill:url(#linearGradient944)">
+            <path
+                d="m 13.658406,74.805139 0.192,-0.64 2.304,-0.64 q 2.56,-0.704 3.712,-3.136 l 19.456,-37.824 h 5.184 l 6.016,37.76 q 0.256,2.24 2.432,3.2 l 1.664,0.64 -0.128,0.64 h -16.064 l 0.192,-0.64 1.408,-0.512 q 2.24,-0.832 1.856,-3.072 l -1.472,-10.304 h -13.632 l -5.376,10.368 q -0.512,1.024 -0.192,1.792 0.32,0.768 1.344,1.088 l 1.984,0.64 -0.128,0.64 z m 23.808,-35.264 -10.048,19.456 h 12.8 z"
+                style="font-size:64px" />
+            <path
+                d="m 57.338432,74.805139 0.096,-0.48 0.768,-0.288 q 1.92,-0.768 2.256,-2.688 l 2.496,-13.344 q 0.48,-2.736 1.008,-5.664 0.528,-2.976 1.008,-5.808 0.384,-1.968 -1.488,-2.736 l -0.48,-0.192 0.096,-0.48 h 12.096 q 5.424,0 8.016,2.016 2.592,1.968 2.592,5.376 0,2.928 -2.016,5.184 -2.016,2.256 -5.76,3.36 l 4.896,12.48 q 0.768,1.824 2.4,2.592 l 0.336,0.192 -0.144,0.48 h -8.592 l -4.848,-14.592 h -3.072 q -0.48,2.496 -0.96,5.28 -0.48,2.784 -1.008,5.904 -0.336,1.92 1.488,2.64 l 0.576,0.288 -0.096,0.48 z m 11.856,-15.552 h 2.4 q 3.888,-0.096 5.808,-2.352 1.968,-2.304 1.968,-6.24 0,-6.576 -5.472,-6.576 h -1.824 z"
+                style="font-size:48px" />
+            <path
+                d="m 104.42641,75.621139 q -6.960005,0 -10.896005,-3.648 -3.936,-3.696 -3.936,-10.32 0,-4.128 1.392,-7.632 1.44,-3.552 3.984,-6.192 2.592,-2.64 6.000005,-4.08 3.456,-1.488 7.488,-1.488 5.04,0 9.36,2.4 l -1.152,7.536 h -0.48 l -1.824,-4.992 q -0.768,-2.208 -1.872,-3.072 -1.056,-0.912 -3.456,-0.912 -3.696,0 -6.528,2.448 -2.832005,2.4 -4.416005,6.624 -1.584,4.176 -1.584,9.552 0,3.984 1.056,6.864 1.104,2.88 2.928005,4.416 1.824,1.536 4.128,1.536 1.248,0 1.968,-0.48 0.768,-0.528 1.008,-2.016 l 0.288,-1.488 q 0.24,-1.536 0.576,-3.552 0.336,-2.016 0.576,-3.888 0.48,-2.544 -2.064,-3.36 l -1.056,-0.336 0.096,-0.48 h 13.008 l -0.096,0.48 -1.056,0.48 q -1.776,0.72 -2.16,2.688 l -2.064,10.896 q -2.112,0.912 -4.272,1.44 -2.112,0.576 -4.944,0.576 z"
+                style="font-size:48px" />
+            <path
+                d="m 131.69041,75.669139 q -4.896,0 -7.92,-2.352 -2.976,-2.4 -2.976,-7.2 0,-1.056 0.144,-2.16 0.192,-1.104 0.384,-2.304 l 0.72,-4.032 q 0.384,-2.4 0.912,-5.28 0.576,-2.88 1.056,-5.52 0.336,-2.256 -1.824,-3.072 l -0.336,-0.144 0.096,-0.48 h 12.144 l -0.096,0.48 -0.48,0.192 q -2.16,0.72 -2.592,2.976 l -2.736,14.544 q -0.192,1.104 -0.336,2.256 -0.144,1.104 -0.144,2.256 0,3.216 1.584,5.04 1.632,1.824 4.704,1.824 3.6,0 5.808,-2.448 2.208,-2.496 2.976,-6.672 l 3.168,-16.752 q 0.432,-2.352 -1.776,-3.12 l -0.288,-0.096 0.096,-0.48 h 6.432 l -0.096,0.48 -0.48,0.192 q -2.16,0.72 -2.592,2.976 l -3.168,17.232 q -0.96,5.232 -4.08,8.448 -3.12,3.216 -8.304,3.216 z"
+                style="font-size:48px" />
+            <path
+                d="m 146.90639,74.805139 0.144,-0.48 1.44,-0.624 q 1.152,-0.48 1.392,-1.728 l 2.64,-13.968 q 0.48,-2.688 1.056,-5.904 0.576,-3.216 1.056,-6.048 0.24,-1.44 -1.152,-2.064 l -0.96,-0.384 0.144,-0.48 h 11.568 l -0.096,0.48 -1.392,0.528 q -1.152,0.432 -1.488,1.776 l -2.64,13.968 q -0.48,2.688 -1.056,5.904 -0.576,3.216 -1.104,6.048 -0.144,1.392 1.104,2.016 l 1.104,0.48 -0.144,0.48 z"
+                style="font-size:48px" />
+            <path
+                d="m 184.15442,74.997139 -13.44,-25.872 -4.224,22.176 q -0.384,2.016 1.536,2.736 l 0.816,0.288 -0.048,0.48 h -6.96 l 0.096,-0.48 1.056,-0.384 q 0.96,-0.384 1.488,-0.96 0.576,-0.624 0.768,-1.68 l 4.608,-24.336 -0.576,-1.2 q -0.624,-1.296 -1.92,-2.016 l -0.144,-0.144 0.096,-0.48 h 7.392 l 12.384,23.328 3.792,-20.064 q 0.336,-1.824 -1.392,-2.496 l -0.768,-0.288 0.096,-0.48 h 6.528 l -0.048,0.48 -1.008,0.336 q -0.912,0.336 -1.488,0.96 -0.528,0.576 -0.72,1.584 l -5.376,28.512 z"
+                style="font-size:48px" />
+            <path
+                d="m 208.92241,75.621139 q -6.96,0 -10.896,-3.648 -3.936,-3.696 -3.936,-10.32 0,-4.128 1.392,-7.632 1.44,-3.552 3.984,-6.192 2.592,-2.64 6,-4.08 3.456,-1.488 7.488,-1.488 5.04,0 9.36,2.4 l -1.152,7.536 h -0.48 l -1.824,-4.992 q -0.768,-2.208 -1.872,-3.072 -1.056,-0.912 -3.456,-0.912 -3.696,0 -6.528,2.448 -2.832,2.4 -4.416,6.624 -1.584,4.176 -1.584,9.552 0,3.984 1.056,6.864 1.104,2.88 2.928,4.416 1.824,1.536 4.128,1.536 1.248,0 1.968,-0.48 0.768,-0.528 1.008,-2.016 l 0.288,-1.488 q 0.24,-1.536 0.576,-3.552 0.336,-2.016 0.576,-3.888 0.48,-2.544 -2.064,-3.36 l -1.056,-0.336 0.096,-0.48 h 13.008 l -0.096,0.48 -1.056,0.48 q -1.776,0.72 -2.16,2.688 l -2.064,10.896 q -2.112,0.912 -4.272,1.44 -2.112,0.576 -4.944,0.576 z"
+                style="font-size:48px" />
+            <path
+                d="m 242.47445,75.237139 -0.432,-0.384 q -0.48,-5.184 -1.008,-9.648 -0.48,-4.464 -1.008,-8.64 -0.096,-1.008 -0.432,-1.344 -0.288,-0.336 -0.768,-0.336 -0.48,0 -1.104,0.432 -0.624,0.384 -1.296,1.056 l -0.576,-0.576 q 1.68,-2.4 3.264,-3.6 1.632,-1.2 3.264,-1.2 1.824,0 2.688,1.008 0.912,1.008 1.056,3.216 0.288,3.072 0.528,6.864 0.288,3.744 0.48,7.44 2.208,-4.032 4.416,-8.448 2.208,-4.464 4.512,-9.12 h 2.928 q 0.192,1.392 0.432,3.744 0.24,2.352 0.432,5.088 0.24,2.736 0.48,5.376 0.24,2.592 0.432,4.512 1.68,-2.16 2.976,-3.936 1.344,-1.776 2.688,-3.984 0.768,-1.248 1.008,-2.496 0.24,-1.248 -0.24,-2.448 l -0.816,-2.112 q -0.72,-1.968 0.144,-3.408 0.912,-1.44 2.496,-1.44 1.536,0 2.256,1.008 0.768,0.96 0.768,2.496 0,1.104 -0.528,2.4 -0.48,1.248 -1.776,3.552 -1.824,3.216 -4.704,7.008 -2.88,3.792 -6.48,7.584 l -2.832,0.336 -0.432,-0.384 q -0.384,-3.744 -0.768,-7.296 -0.336,-3.552 -0.864,-7.824 -1.776,3.744 -3.936,7.776 -2.112,3.984 -4.224,7.392 z"
+                style="font-size:48px" />
+            <path
+                d="m 281.40248,48.309139 q -1.344,0 -2.352,-0.864 -0.96,-0.912 -0.96,-2.4 0,-1.68 1.152,-2.736 1.2,-1.104 2.688,-1.104 1.44,0 2.352,0.912 0.912,0.912 0.912,2.352 0,1.632 -1.152,2.736 -1.152,1.104 -2.64,1.104 z m -4.464,27.216 q -1.488,0 -2.448,-0.768 -0.96,-0.768 -0.96,-2.256 0,-0.864 0.192,-2.064 0.192,-1.2 0.432,-2.4 l 2.256,-10.8 q 0.432,-1.968 -1.392,-2.784 l -0.768,-0.384 0.048,-0.528 9.024,-2.592 0.48,0.432 -3.744,17.376 q -0.192,0.864 -0.288,1.488 -0.096,0.576 -0.096,1.152 0,1.056 0.96,1.056 0.72,0 1.44,-0.432 0.72,-0.48 1.824,-1.536 l 0.432,0.432 q -1.2,1.776 -3.072,3.216 -1.824,1.392 -4.32,1.392 z"
+                style="font-size:48px" />
+            <path
+                d="m 291.57847,75.525139 q -1.488,0 -2.496,-0.768 -0.96,-0.816 -0.96,-2.352 0,-0.96 0.192,-2.064 0.192,-1.152 0.432,-2.448 l 3.312,-15.168 h -3.984 l 0.144,-0.576 1.728,-0.192 q 1.344,-0.144 2.352,-0.672 1.008,-0.528 1.92,-1.488 l 4.608,-4.656 h 0.72 l -1.344,6.576 h 5.232 l -0.24,1.008 h -5.232 l -3.312,15.984 q -0.192,0.912 -0.288,1.584 -0.096,0.624 -0.096,1.056 0,0.48 0.288,0.768 0.288,0.288 0.624,0.288 0.672,0 1.44,-0.528 0.768,-0.576 1.92,-1.68 l 0.576,0.48 q -1.2,1.776 -3.12,3.312 -1.92,1.536 -4.416,1.536 z"
+                style="font-size:48px" />
+            <path
+                d="m 302.37849,75.093139 -0.288,-0.288 4.368,-20.928 q 0.384,-1.824 0.672,-3.264 0.288,-1.488 0.624,-3.312 0.384,-2.064 -1.584,-2.736 l -0.768,-0.24 0.096,-0.48 9.168,-2.688 0.336,0.336 -3.264,15.312 q 2.4,-2.496 5.088,-4.128 2.736,-1.68 5.04,-1.68 1.536,0 2.496,0.96 1.008,0.912 1.008,2.88 0,1.008 -0.192,2.112 -0.192,1.056 -0.48,2.208 l -2.4,9.792 q -0.192,0.912 -0.384,1.584 -0.192,0.624 -0.192,1.008 0,1.008 0.864,1.008 1.248,0 3.504,-2.112 l 0.432,0.432 q -1.152,1.776 -3.12,3.216 -1.968,1.44 -4.464,1.44 -1.584,0 -2.448,-0.72 -0.864,-0.768 -0.864,-2.112 0,-1.008 0.24,-2.064 0.24,-1.104 0.576,-2.256 l 2.16,-8.448 q 0.336,-1.296 0.576,-2.352 0.288,-1.104 0.288,-1.872 0,-1.68 -1.584,-1.68 -2.352,0 -6.192,3.84 l -1.44,6.672 q -0.624,2.928 -1.104,5.328 -0.432,2.352 -0.864,4.944 z"
+                style="font-size:48px" />
+            <path
+                d="m 337.33318,74.805139 0.192,-0.64 2.304,-0.64 q 2.56,-0.704 3.712,-3.136 l 19.456,-37.824 h 5.184 l 6.016,37.76 q 0.256,2.24 2.432,3.2 l 1.664,0.64 -0.128,0.64 h -16.064 l 0.192,-0.64 1.408,-0.512 q 2.24,-0.832 1.856,-3.072 l -1.472,-10.304 h -13.632 l -5.376,10.368 q -0.512,1.024 -0.192,1.792 0.32,0.768 1.344,1.088 l 1.984,0.64 -0.128,0.64 z m 23.808,-35.264 -10.048,19.456 h 12.8 z"
+                style="font-size:64px" />
+            <path
+                d="m 381.01321,74.805139 0.048,-0.48 0.96,-0.336 q 1.68,-0.576 2.016,-2.304 l 2.592,-13.68 q 0.48,-2.544 1.008,-5.664 0.576,-3.168 1.056,-5.952 0.288,-1.728 -1.392,-2.544 l -0.624,-0.24 0.096,-0.48 h 11.856 l -0.048,0.48 -1.2,0.384 q -1.728,0.624 -2.064,2.4 l -2.592,13.488 q -0.384,2.016 -0.816,4.512 -0.432,2.448 -0.864,4.944 -0.432,2.448 -0.768,4.512 h 5.136 q 2.064,0 3.504,-0.72 1.488,-0.768 2.688,-2.4 l 3.792,-5.232 h 0.48 l -2.016,9.312 z"
+                style="font-size:48px" />
+            <path
+                d="m 423.15724,75.621139 q -6.96,0 -10.896,-3.648 -3.936,-3.696 -3.936,-10.32 0,-4.128 1.392,-7.632 1.44,-3.552 3.984,-6.192 2.592,-2.64 6,-4.08 3.456,-1.488 7.488,-1.488 5.04,0 9.36,2.4 l -1.152,7.536 h -0.48 l -1.824,-4.992 q -0.768,-2.208 -1.872,-3.072 -1.056,-0.912 -3.456,-0.912 -3.696,0 -6.528,2.448 -2.832,2.4 -4.416,6.624 -1.584,4.176 -1.584,9.552 0,3.984 1.056,6.864 1.104,2.88 2.928,4.416 1.824,1.536 4.128,1.536 1.248,0 1.968,-0.48 0.768,-0.528 1.008,-2.016 l 0.288,-1.488 q 0.24,-1.536 0.576,-3.552 0.336,-2.016 0.576,-3.888 0.48,-2.544 -2.064,-3.36 l -1.056,-0.336 0.096,-0.48 h 13.008 l -0.096,0.48 -1.056,0.48 q -1.776,0.72 -2.16,2.688 l -2.064,10.896 q -2.112,0.912 -4.272,1.44 -2.112,0.576 -4.944,0.576 z"
+                style="font-size:48px" />
+            <path
+                d="m 452.00526,75.621139 q -3.456,0 -6.144,-1.488 -2.688,-1.488 -4.224,-4.416 -1.536,-2.928 -1.536,-7.296 0,-3.984 1.248,-7.584 1.248,-3.6 3.552,-6.432 2.352,-2.832 5.616,-4.464 3.312,-1.632 7.344,-1.632 3.6,0 6.288,1.632 2.688,1.584 4.176,4.56 1.488,2.928 1.488,6.96 0,4.032 -1.248,7.68 -1.248,3.648 -3.6,6.48 -2.304,2.784 -5.616,4.416 -3.264,1.584 -7.344,1.584 z m 0.48,-0.96 q 2.16,0 4.08,-1.584 1.92,-1.632 3.36,-4.416 1.488,-2.832 2.304,-6.528 0.864,-3.744 0.864,-7.92 0,-5.28 -1.248,-8.112 -1.248,-2.832 -4.224,-2.832 -2.208,0 -4.176,1.584 -1.968,1.584 -3.456,4.368 -1.488,2.784 -2.352,6.48 -0.864,3.648 -0.864,7.824 0,5.376 1.344,8.256 1.392,2.88 4.368,2.88 z"
+                style="font-size:48px" />
+            <path
+                d="m 469.33321,74.805139 0.096,-0.48 0.768,-0.288 q 1.92,-0.768 2.256,-2.688 l 2.496,-13.344 q 0.48,-2.736 1.008,-5.664 0.528,-2.976 1.008,-5.808 0.384,-1.968 -1.488,-2.736 l -0.48,-0.192 0.096,-0.48 h 12.096 q 5.424,0 8.016,2.016 2.592,1.968 2.592,5.376 0,2.928 -2.016,5.184 -2.016,2.256 -5.76,3.36 l 4.896,12.48 q 0.768,1.824 2.4,2.592 l 0.336,0.192 -0.144,0.48 h -8.592 l -4.848,-14.592 h -3.072 q -0.48,2.496 -0.96,5.28 -0.48,2.784 -1.008,5.904 -0.336,1.92 1.488,2.64 l 0.576,0.288 -0.096,0.48 z m 11.856,-15.552 h 2.4 q 3.888,-0.096 5.808,-2.352 1.968,-2.304 1.968,-6.24 0,-6.576 -5.472,-6.576 h -1.824 z"
+                style="font-size:48px" />
+            <path
+                d="m 499.33321,74.805139 0.144,-0.48 1.44,-0.624 q 1.152,-0.48 1.392,-1.728 l 2.64,-13.968 q 0.48,-2.688 1.056,-5.904 0.576,-3.216 1.056,-6.048 0.24,-1.44 -1.152,-2.064 l -0.96,-0.384 0.144,-0.48 h 11.568 l -0.096,0.48 -1.392,0.528 q -1.152,0.432 -1.488,1.776 l -2.64,13.968 q -0.48,2.688 -1.056,5.904 -0.576,3.216 -1.104,6.048 -0.144,1.392 1.104,2.016 l 1.104,0.48 -0.144,0.48 z"
+                style="font-size:48px" />
+            <path
+                d="m 520.69324,74.805139 0.096,-0.48 1.152,-0.432 q 2.208,-0.912 2.688,-3.264 l 2.352,-12.624 q 0.384,-2.016 0.816,-4.464 0.48,-2.496 0.912,-4.944 0.432,-2.496 0.768,-4.512 h -2.064 q -1.728,0 -2.976,0.624 -1.248,0.624 -2.256,2.016 l -3.84,5.232 h -0.48 l 1.776,-8.832 h 26.592 l -1.536,8.832 h -0.48 l -1.776,-4.848 q -1.056,-3.024 -4.368,-3.024 h -1.968 l -2.976,15.792 q -0.48,2.448 -1.008,5.28 -0.48,2.784 -0.96,5.424 -0.432,2.496 1.872,3.456 l 0.624,0.288 -0.096,0.48 z"
+                style="font-size:48px" />
+            <path
+                d="m 543.20531,74.805139 0.096,-0.48 1.2,-0.384 q 1.44,-0.624 1.68,-2.064 l 2.64,-13.872 q 0.48,-2.592 1.056,-5.76 0.576,-3.216 1.056,-6.048 0.288,-1.68 -1.344,-2.304 l -0.72,-0.288 0.096,-0.48 h 11.808 l -0.096,0.48 -1.248,0.384 q -1.632,0.576 -1.92,2.208 l -2.16,11.808 h 11.904 q 0.288,-1.584 0.624,-3.6 0.384,-2.016 0.72,-4.128 0.384,-2.112 0.672,-3.936 0.288,-1.824 -1.392,-2.496 l -0.72,-0.24 0.096,-0.48 h 11.808 l -0.096,0.48 -1.152,0.384 q -1.584,0.576 -1.92,2.208 l -2.592,13.68 q -0.48,2.688 -1.008,5.664 -0.528,2.928 -1.104,6.288 -0.24,1.536 1.152,2.064 l 1.104,0.432 -0.096,0.48 h -11.952 l 0.096,-0.48 1.392,-0.48 q 1.392,-0.48 1.68,-1.92 l 2.448,-12.96 h -11.904 q -0.528,2.736 -1.152,6.096 -0.576,3.312 -1.152,6.816 -0.24,1.488 1.104,2.064 l 0.912,0.384 -0.096,0.48 z"
+                style="font-size:48px" />
+            <path
+                d="m 576.08532,74.805139 0.096,-0.48 1.104,-0.288 q 2.208,-0.624 2.592,-2.784 l 4.512,-24.144 -0.144,-0.528 q -0.048,-1.728 -1.536,-2.736 l -0.336,-0.24 0.096,-0.48 h 8.16 l 6.144,23.712 14.16,-23.712 h 8.448 l -0.096,0.48 -0.96,0.432 q -1.728,0.72 -2.064,2.688 l -2.352,13.152 q -0.528,2.88 -1.056,5.808 -0.528,2.928 -1.008,5.856 -0.336,2.016 1.68,2.64 l 0.384,0.144 -0.096,0.48 h -11.472 l 0.096,-0.48 0.48,-0.144 q 2.016,-0.624 2.352,-2.688 l 4.224,-22.992 -15.696,26.304 h -1.776 l -6.72,-26.208 -4.128,22.56 q -0.432,2.208 1.728,2.928 l 0.864,0.24 -0.096,0.48 z"
+                style="font-size:48px" />
+            <path
+                d="m 627.39731,75.669139 q -2.496,0 -4.944,-0.624 -2.4,-0.624 -4.08,-1.776 l 1.152,-7.056 h 0.48 l 1.392,3.936 q 0.816,2.352 2.112,3.456 1.344,1.104 3.888,1.104 2.832,0 4.464,-1.68 1.68,-1.68 1.68,-4.032 0,-1.248 -0.384,-2.352 -0.384,-1.104 -1.488,-2.304 -1.056,-1.2 -3.168,-2.688 -2.592,-1.872 -3.984,-3.504 -1.392,-1.632 -1.92,-3.216 -0.528,-1.584 -0.528,-3.216 0,-2.832 1.44,-4.944 1.44,-2.16 3.984,-3.312 2.592,-1.2 5.856,-1.2 2.4,0 4.752,0.672 2.4,0.624 3.984,1.728 l -1.344,6.72 h -0.48 l -0.96,-3.168 q -0.768,-2.544 -2.016,-3.744 -1.248,-1.248 -3.792,-1.248 -2.496,0 -4.224,1.44 -1.68,1.44 -1.68,3.84 0,2.064 1.104,3.744 1.104,1.68 3.984,3.744 3.792,2.784 5.232,5.04 1.488,2.208 1.488,4.8 0,3.072 -1.536,5.28 -1.536,2.16 -4.272,3.36 -2.688,1.2 -6.192,1.2 z"
+                style="font-size:48px" />
+        </g>
+    </g>
+    </svg>
+        <header>
+            <div class="progress-container">
+                <div class="progress-bar" id="topProgressBar"></div>
+            </div>
+            <nav>
+                <a href="#"><img src="../images/nav.png" alt="Navigation menu"><label>Navigation</label></a>
+                <ul role="menubar">
+                    <li role="none" class="heading"><h3>Tom Yedwab's personal blog</h3></li>
+                    <li role="none"><a role="menuitem" href="../index.html">Post history</a></li>
+                    <li role="none"><a role="menuitem" href="../Resume_Tom_Yedwab_2024.pdf" target="_blank">My resume</a></li>
+                    <li role="none" class="icon">
+                        <a role="menuitem" href="https://github.com/tomyedwab" target="_blank">
+                            <picture>
+                                <source srcset="../images/github-mark.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+                                <img src="../images/github-mark-white.svg" alt="GitHub" width="34" height="34">
+                            </picture>
+                            <label>GitHub</label>
+                        </a>
+                    </li>
+                    <li role="none" class="icon">
+                        <a role="menuitem" href="mailto:blog@tomyedwab.com">
+                            <img src="../images/email.svg" alt="blog@tomyedwab.com" width="34" height="34">
+                            <label>Email</label>
+                        </a>
+                    </li>
+                    <li role="none" class="icon">
+                        <a role="menuitem" href="https://www.linkedin.com/in/tomyedwab">
+                            <img src="../images/In-Blue-34.png" alt="LinkedIn profile" width="34" height="34">
+                            <label>LinkedIn</label>
+                        </a>
+                    </li>
+                    <li role="none" class="icon">
+                        <a role="menuitem" href="https://bsky.app/profile/tomyedwab.bsky.social">
+                            <img src="../images/Bluesky_Logo.svg" alt="Bluesky profile" height="34">
+                            <label>Bluesky</label>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="top-spacer"></div>
+        <div class="title-underline">
+            <h1>How to keep your AI coding agent from going rogue</h1>
+            <p class="subtitle">Written May 20, 2025</p>
+        </div>
+        <article>
+<p>You fired up Windsurf, or Copilot, or Cursor. You got comfortable with tab
+autocomplete, asking questions about your codebase, prompting AI to write a few
+short functions for you. These tools are fun to use and are saving you a modest
+amount of time, so when a colleague tells you they are getting projects done
+twice, five times, even <em>ten times faster</em> by using an AI agent, you don't
+immediately dismiss it. You wanted to see it for yourself, so you found a small,
+self-contained project and prompted the agent to complete it for you.</p>
+<p>You immediately ran into problems:</p>
+<ul>
+<li>Your agent installed an older version of a package and immediately ran into compatibility issues.</li>
+<li>Your agent forgot an import and started to rewrite the entire file to try to clear the errors.</li>
+<li>Your agent broke or deleted perfectly working code that wasn't related to the task at hand.</li>
+<li>Your agent forgot where it wrote a file and re-created it elsewhere in your workspace.</li>
+<li>Your agent decided the easiest way to get a test to pass was to delete the test.</li>
+<li>Your agent entered a "death spiral" of ever larger and more broken changes to resolve a simple issue.</li>
+</ul>
+<p>In the end a task that should have taken a few hours instead consumed a whole
+day, leaving you frustrated and perplexed. How is anyone actually seeing
+speed-ups here? Are they just pushing whatever broken code this idiotic model
+emits into production?</p>
+<p>What I'm going to describe in this post is a pattern that I've seen multiple
+software developers use but haven't seen written about extensively. I have used
+it myself to <em>reliably get good results</em> using an agenting LLM coding assistant,
+and to <em>quickly identify and recover from mistakes</em> to minimize time spent in
+death spirals; the net result of which is a significant speed-up over working
+without an agent. I'm dubbing this the <strong>"Technical Design Spec"</strong> pattern, as
+this term both conveys the lynchpin idea of the pattern, and also happens to
+elicit the behavior I want from the LLMs I've tested.</p>
+<p>Will this pattern be obviated by better models and smarter agents? We can hope!
+But for now, it seems widely applicable across a variety of agentic tools and
+foundational language models, so it's worth giving it a try if, like me, you've
+struggled to get good results by directly asking the agent to implement a
+feature.</p>
+<p>The pattern is broken down into a set of independent ideas that work together to
+keep the agent on track. Some of these ideas seem like a lot of extra work and
+you might worry this will slow down development. If a human had to do all this
+extra bookkeeping, this would be a real concern. But the AI agent is typically
+so fast at doing and re-doing these steps that the added reliability and
+predictability more than make up for the extra effort.</p>
+<p>Anyway, without further ado:</p>
+<h2>💡 Idea #1: For any multi-step operation, prompt the agent to write a Technical Design Spec into a Markdown file in your workspace. This spec lives in source control for the duration of the project.</h2>
+<p><em>Justification:</em> Forcing the agent to commit plans to writing before starting implementation achieves several critical goals:</p>
+<ol>
+<li>Allows you an opportunity to review and correct assumptions and technical decisions before committing to them,</li>
+<li>Lays out a step-by-step implementation plan that can guide small, incremental changes (see Idea #3),</li>
+<li>Provides a form of task memory for planning details and work in progress that can be checkpointed (see Ideas #4 and #5),</li>
+<li>Summarizes implementation details that form the basis for technical documentation (see Idea #6).</li>
+</ol>
+<p>Again, we're not writing a spec merely because it's a good practice to gather
+requirements and break work down into discrete steps. We are exerting oversight
+into what the agent has in its context window and minimizing the random behavior
+that all LLMs exhibit by default.</p>
+<p>What is and isn't included in a spec is fully up to you and your style of
+coding. Usually my specs include project goals, a list of tasks, modules or
+files to create or update, function definitions and APIs. Within an existing
+codebase, the agent may have to do some research to complete the spec, but it
+should not write any code at this stage.</p>
+<p>For a larger project such as building a whole application from the ground up,
+the individual steps might themselves involve multiple steps and therefore need
+to be broken down in their own spec files before the agent can start
+implementation. The parent spec should have only the details such as
+API definitions that are needed to coordinate work across the different steps,
+while further implementation details should be pushed down to the relevant child
+spec.</p>
+<p><em>Note:</em> For this task you will want to select a model with strong reasoning capabilities
+and allow it as much time to think as possible: The more thinking that is done
+ahead of time, the faster and smoother the implementation will go. (Honestly,
+I've found this to be solid life advice as well.)</p>
+<p><em>Example:</em> Here I am taking a high-level description of a feature and asking the
+LLM agent to write a detailed technical spec. The model is
+<code>gemini-2.5-pro-preview-05-06</code>.</p>
+<blockquote>
+<p>Write a comprehensive Technical Design Spec for a new backend feature in the
+users service allowing users to specify their favorite color. It should include
+a REST endpoint and a new database model. Use existing endpoints and models for
+reference. Break the work down into discrete tasks but do not include any code.
+Put the spec in specs/user-favorite-color.md.</p>
+</blockquote>
+<p>The output spec is included verbatim in the appendix.</p>
+<h2>💡 Idea #2: Ensure that spec files include full file paths to any relevant files in your workspace.</h2>
+<p><em>Justification:</em> A specific failure case that happens in larger projects is the
+agent losing track of which files it has created and creating duplicate
+files in different paths. These incorrect paths seem to be exacerbated by
+references in the spec to bare filenames like <code>main.go</code>, and it pays to be
+vigilant against these and replace them with full paths such as
+<code>server/cmd/main/main.go</code>. Including the path to each file in the spec
+allows the agent to read and write directly without additional tool calls to
+find the file's location.</p>
+<h2>💡 Idea #3: Implement against the spec by prompting for one step at a time, including the spec file in the context explicitly.</h2>
+<p><em>Justification:</em> Prompting the agent to implement only one step at a time
+prevents it biting off more than it can chew, and gives you frequent checkpoints
+to roll back to when &mdash; not if &mdash; something goes terribly wrong (see Idea #4).
+This does require actively monitoring the agent, prompting it to move to the next
+step and testing each change in isolation, so don't expect to submit your prompt
+and come back the next morning to a finished project. That said, it's not
+necessary to choose the next step or give context about the other steps since
+that is all coming from the spec.</p>
+<p>How much attention I pay to the output depends on whether the code will need to
+be maintained for a long time, as opposed to short-lived code I can "vibe code"
+quickly without any review. That said, the volume of changes for one step is
+usually reasonable to at least skim through.</p>
+<p><em>Example:</em> Since the spec contains all the steps, my prompt is very simple:</p>
+<blockquote>
+<p>Per @user-favorite-color.md, implement the first step.</p>
+</blockquote>
+<p><em>Note:</em> Since the spec is fairly detailed, I don't need to waste a lot of thinking
+tokens on this task. Therefore I can safely fall back to a simpler model like
+<code>claude-3.5-sonnet</code> that is good at fast and accurate implementation.</p>
+<h2>💡 Idea #4: When the agent makes a mistake, roll back to a checkpoint and update the prompt before trying again.</h2>
+<p><em>Justification:</em> It's tempting to treat the agent like a coworker and correct it
+when it makes a mistake. This works for very minor corrections, but if the agent
+is really going down the wrong path, asking it to undo changes and take a
+different approach leaves it with a large amount of its limited context window
+consumed with invalid history that the model now has to actively ignore.
+Performance on the second try invariably suffers.</p>
+<p>Unlike your coworker, the agent will not feel offended if you revert all their
+changes yourself and try again: you might clarify your prompt to avoid a
+particular stumbling block, or you might make changes to ambiguous points in the
+spec. If you are using rules files in your project, you might add new guidance
+there as well. Sometimes due to the non-deterministic nature of the model,
+simply retrying the same exact prompt will lead to a better result!</p>
+<p>Some agenting coding tools have built-in support for rolling back to the last
+prompt or rejecting all changes. If your tool does not have this feature, I
+suggest committing to source control after each successful step so you have a
+checkpoint to roll back to. You can always squash the commits later.</p>
+<h2>💡 Idea #5: At the end of every implementation step, let the agent update the spec and start a new chat session.</h2>
+<p><em>Justification:</em> Current-generation LLM performance degrades noticeably as the
+context window gets full, increasing the rate of hallucinations and mistakes,
+wasting more time and more tokens. Some agentic tools tell you when this is
+happening, while others quietly drop parts of the conversation history. To get
+the best and most predictable performance you want to keep the context window
+focused on the task at hand, which means aggressively culling tasks from the
+context window as soon as they are completed. This is achieved by simply
+starting a new chat session at the end of each task.</p>
+<p>Crucially, this requires that any information required by a subsequent task needs
+to be retained in the spec file, which serves as "long term memory" and process
+documentation for the duration of the project. Thus, at the end of each chat
+session you should prompt the agent to update the spec if it hasn't already done
+it (by instruction from rules files).</p>
+<p><em>Note:</em> I haven't really tried this myself, but if the tasks are isolated
+enough, you could run multiple agents concurrently in different work trees and
+use the spec file to coordinate the work. Or multiple developers could share a
+branch using their own agents on their assigned tasks. This is one potential
+benefit of checking the spec file into a feature branch.</p>
+<p><em>Example:</em> After completing each step, my final prompt is something like:</p>
+<blockquote>
+<p>Update the spec file with this progress and any technical details we will need
+for the rest of the project.</p>
+</blockquote>
+<p>The most helpful details this step adds to the spec file are completed tasks (so
+the next call to the agent doesn't try to implement steps that are already
+complete) as well as absolute file paths and class names needed for subsequent
+steps.</p>
+<h2>💡 Idea #6: Once a spec is complete, let the agent update the parent spec and relevant documentation.</h2>
+<p><em>Justification:</em> You could very reasonably just leave the spec files in the
+repository long-term and use them as documentation. This is not my style; I find
+I have very different needs of documentation for in-flight projects compared to
+long-lived documentation such as API references, style guides, READMEs or
+package/file-level docstrings. Therefore, I suggest one final best practice: at
+the end of the project, prompt the agent to use the completed spec document to
+create or update this long-lived documentation. Then delete the project spec
+before merging to main, deploying, etc.</p>
+<p>This applies whether the documentation lives in your repository or elsewhere;
+you may have tooling to enable agents to easily read and update documentation in
+a Wiki, for example. But the principle remains the same.</p>
+<p>As well as updating documentation, if the completed spec has a parent spec, now
+is a good time to update that spec with completion status and any relevant
+decisions that were made during implementation.</p>
+<h2>Summary</h2>
+<p>That's it! If you are struggling to make progress with an agent I highly
+recommend trying this pattern in full, and then keeping the parts that work for
+you. Or use this as inspiration to invent your own ways to manage the contents
+of the context window, passing relevant context to the agent while removing
+irrelevant details to keep it from being overwhelmed and allowing it to make
+decisions while you stay in control.</p>
+<p>Good luck!</p>
+<hr />
+<h2>Appendix: Example Technical Design Spec</h2>
+<p>Below for reference is the verbatim output of the example prompt from Idea #1:</p>
+<pre>
+# Technical Design Spec: User Favorite Color Feature
+
+## 1. Overview
+
+This document outlines the technical design for a new feature allowing users to specify and update their favorite color. This feature will integrate with the existing event-driven architecture of the users service. It involves creating a new database table to store favorite colors, defining a new event to signal color updates, implementing a state handler to process this event and manage the table, updating the event mapper, and exposing a new REST API endpoint for users to set their favorite color.
+
+## 2. Database Model: `user_favorite_colors_v1`
+
+A new SQL table will be created to store user favorite colors.
+
+*   **Table Name**: `user_favorite_colors_v1`
+*   **Purpose**: To store a single favorite color preference for each user.
+*   **Schema Definition**:
+    *   `user_id TEXT PRIMARY KEY`: The unique identifier for the user. This will be a foreign key referencing the primary ID of the main user table (e.g., `users_v1.id`).
+    *   `color TEXT NOT NULL`: The user's chosen favorite color (e.g., "blue", "#00FF00").
+    *   `updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP`: Timestamp of when the favorite color was last set or updated.
+*   **Indexes**: A primary key index will automatically be created on `user_id`.
+*   **Foreign Key Constraint**: `FOREIGN KEY(user_id) REFERENCES users_v1(id) ON DELETE CASCADE`. This ensures that if a user is deleted, their favorite color record is also removed.
+
+## 3. Events
+
+A new event type will be defined to represent the action of a user setting or updating their favorite color.
+
+*   **Event Name**: `UserFavoriteColorUpdatedEvent`
+*   **Base Event**: This event will embed `events.GenericEvent` to include common fields like `Id` and `Type`.
+*   **Event Type String**: `"user:FAVORITE_COLOR_UPDATED"`
+*   **Payload Fields**:
+    *   `UserID string`: The ID of the user whose favorite color is being updated.
+    *   `Color string`: The new favorite color.
+*   **Conceptual Struct Definition**:
+    ```go
+    // type UserFavoriteColorUpdatedEvent struct {
+    //     events.GenericEvent
+    //     UserID string `json:"user_id"`
+    //     Color  string `json:"color"`
+    // }
+    ```
+
+## 4. State Handler: `UserFavoriteColorStateHandler`
+
+A new state handler will be responsible for managing the `user_favorite_colors_v1` table.
+
+*   **Handler Name**: `UserFavoriteColorStateHandler`
+*   **Signature**: Conforming to `func(tx *sqlx.Tx, event events.Event) (bool, error)`.
+*   **Responsibilities**:
+    *   **Schema Initialization**: On receiving an `*events.DBInitEvent`, the handler will execute a `CREATE TABLE IF NOT EXISTS user_favorite_colors_v1 ...` DDL statement as defined in Section 2.
+    *   **Event Processing**: On receiving a `*UserFavoriteColorUpdatedEvent`:
+        *   It will perform an "upsert" operation (insert or update) into the `user_favorite_colors_v1` table.
+        *   SQL (conceptual): `INSERT INTO user_favorite_colors_v1 (user_id, color, updated_at) VALUES ($1, $2, NOW()) ON CONFLICT (user_id) DO UPDATE SET color = EXCLUDED.color, updated_at = NOW();`
+        *   It will return `true, nil` if the event is handled successfully.
+    *   If the event is not `*events.DBInitEvent` or `*UserFavoriteColorUpdatedEvent`, it will return `false, nil`.
+
+## 5. Event Mapper (e.g., `state.MapUserEventType`)
+
+The existing event mapper function responsible for deserializing generic event messages into specific typed Go event structs will be updated.
+
+*   **Modification**: Add a new `case` to the `switch generic.GetType()` statement.
+*   **Logic for `"user:FAVORITE_COLOR_UPDATED"`**:
+    *   Unmarshal the raw message (`*json.RawMessage`) into a `UserFavoriteColorUpdatedEvent` struct.
+    *   Copy common fields from the input `generic` event to the specific event's embedded `GenericEvent`.
+    *   Return the populated `*UserFavoriteColorUpdatedEvent` and `nil` error.
+
+## 6. REST API Endpoint
+
+A new REST API endpoint will be created to allow users (or authorized systems) to set/update a user's favorite color.
+
+*   **Endpoint**: `PUT /api/users/{user_id}/favorite-color`
+*   **HTTP Method**: `PUT` (chosen for its idempotency in setting/replacing the favorite color resource).
+*   **Path Parameter**:
+    *   `user_id (string)`: The unique identifier of the user.
+*   **Request Body (JSON)**:
+    ```json
+    {
+      "color": "sky blue"
+    }
+    ```
+*   **Authentication**: Required. The caller must be authenticated.
+*   **Authorization**:
+    *   A user should typically only be allowed to update their own favorite color. The API handler will verify that the authenticated user's ID matches the `user_id` in the path.
+    *   Administrative overrides might be considered for future iterations but are out of scope for the initial implementation.
+*   **API Handler Logic**:
+    1.  Authenticate the request.
+    2.  Validate the `user_id` path parameter and the request body (e.g., `color` field is present and valid).
+    3.  Authorize the request (e.g., check if authenticated user matches `user_id`).
+    4.  If valid and authorized, create a `UserFavoriteColorUpdatedEvent` with the `user_id` and `color`.
+    5.  Dispatch this event using the `database` core's event publishing mechanism.
+    6.  Return an appropriate HTTP response.
+*   **Success Response (200 OK)**:
+    ```json
+    {
+      "user_id": "actual-user-id",
+      "color": "sky blue",
+      "updated_at": "iso8601-timestamp"
+    }
+    ```
+*   **Error Responses**:
+    *   `400 Bad Request`: Invalid request body (e.g., missing `color`, invalid color format).
+    *   `401 Unauthorized`: Authentication failure.
+    *   `403 Forbidden`: Authenticated user is not authorized to update the specified `user_id`'s favorite color.
+    *   `404 Not Found`: The specified `user_id` does not exist.
+    *   `500 Internal Server Error`: Unexpected server-side error during event processing.
+
+## 7. Data Validation
+
+*   **Color Field**: The `color` string in the request body should be non-empty. Further validation (e.g., specific formats like hex codes, or a list of allowed named colors) can be added. Initially, a non-empty string will suffice. Max length for the color string should also be considered (e.g., 50 characters).
+
+## 8. Registration and Initialization (e.g., in `users/cmd/serve/main.go`)
+
+The new components must be registered with the system:
+
+*   **State Handler Map**: The `UserFavoriteColorStateHandler` will be added to the map of handlers passed to `database.Connect()`, associated with a key like `"user_favorite_colors_v1"`.
+*   **Event Mapper**: Ensure the `database.InitHandlers()` (or equivalent) is called with the updated event mapper function that includes the new `UserFavoriteColorUpdatedEvent` mapping.
+*   **API Endpoint**: The new `PUT /api/users/{user_id}/favorite-color` route and its handler function will be registered with the HTTP server.
+
+## 9. Breakdown of Tasks
+
+1.  **Define Event Struct**:
+    *   Create the `UserFavoriteColorUpdatedEvent` struct (embedding `events.GenericEvent`) in the relevant events definition file (e.g., `users/state/events.go` or a new `users/state/db-user-favorite-colors-events.go`).
+2.  **Implement State Handler**:
+    *   Create the `UserFavoriteColorStateHandler` function (e.g., in a new file `users/state/db-user-favorite-colors.go`).
+    *   Implement logic for `*events.DBInitEvent` to create the `user_favorite_colors_v1` table, including the foreign key constraint.
+    *   Implement logic for `*UserFavoriteColorUpdatedEvent` to perform the upsert operation.
+3.  **Update Event Mapper**:
+    *   Modify the existing `MapUserEventType` (or equivalent function, likely in `users/state/mapper.go`) to include a case for `"user:FAVORITE_COLOR_UPDATED"`, deserializing it into `*UserFavoriteColorUpdatedEvent`.
+4.  **Implement API Handler**:
+    *   Create the HTTP handler function for the `PUT /api/users/{user_id}/favorite-color` endpoint.
+    *   Include request validation (path params, body), authentication, and authorization logic.
+    *   On success, construct and dispatch the `UserFavoriteColorUpdatedEvent`.
+    *   Return appropriate HTTP success or error responses.
+5.  **Register Components**:
+    *   In `users/cmd/serve/main.go` (or the application's entry point):
+        *   Add `UserFavoriteColorStateHandler` to the `handlers` map.
+        *   Register the new API route and its handler.
+6.  **Testing**:
+    *   Write unit tests for:
+        *   `UserFavoriteColorStateHandler` (DB initialization and event handling logic).
+        *   The new case in the Event Mapper.
+        *   The API endpoint handler (validation, auth, event dispatch, responses).
+    *   Write integration tests to cover the end-to-end flow: API call -> event creation -> state handler processing -> database update.
+7.  **Documentation**:
+    *   Update any API documentation (e.g., Swagger/OpenAPI specifications) to include the new endpoint.
+    *   Ensure internal documentation (like this spec) is accessible. 
+</pre>
+
+</article>
+        <div class="copyright">&copy; 2025 Tom Yedwab</div>
+    </body>
+</html>
