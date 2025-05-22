@@ -156,13 +156,13 @@
 <p>You fired up Windsurf, or Copilot, or Cursor. You got comfortable with tab
 autocomplete, asking questions about your codebase, prompting AI to write a few
 short functions for you. These tools are fun to use and are saving you a modest
-amount of time, so when a colleague tells you they are getting projects done
-twice, five times, even <em>ten times faster</em> by using an AI agent, you don't
-immediately dismiss it. You wanted to see it for yourself, so you found a small,
+amount of time, so when a colleague confesses to you they are getting projects
+done twice, five times, even <em>ten times faster</em> by using an AI agent, you don't
+immediately dismiss it. You wanted to see for yourself, so you found a small,
 self-contained project and prompted the agent to complete it for you.</p>
 <p>You immediately ran into problems:</p>
 <ul>
-<li>Your agent installed an older version of a package and immediately ran into compatibility issues.</li>
+<li>Your agent installed an older version of a package and immediately ran into compatibility issues</li>
 <li>Your agent forgot an import and started to rewrite the entire file to try to clear the errors.</li>
 <li>Your agent broke or deleted perfectly working code that wasn't related to the task at hand.</li>
 <li>Your agent forgot where it wrote a file and re-created it elsewhere in your workspace.</li>
@@ -189,7 +189,7 @@ feature.</p>
 <p>The pattern is broken down into a set of independent ideas that work together to
 keep the agent on track. Some of these ideas seem like a lot of extra work and
 you might worry this will slow down development. If a human had to do all this
-extra bookkeeping, this would be a real concern. But the AI agent is typically
+extra bookkeeping, this would be a real concern! But the AI agent is typically
 so fast at doing and re-doing these steps that the added reliability and
 predictability more than make up for the extra effort.</p>
 <p>Anyway, without further ado:</p>
@@ -253,10 +253,12 @@ that is all coming from the spec.</p>
 <p>How much attention I pay to the output depends on whether the code will need to
 be maintained for a long time, as opposed to short-lived code I can "vibe code"
 quickly without any review. That said, the volume of changes for one step is
-usually reasonable to at least skim through.</p>
+usually reasonable to at least skim through; this is one place where decades of
+coding experience help me quickly gauge whether the output is reasonable or I
+need to inspect more carefully.</p>
 <p><em>Example:</em> Since the spec contains all the steps, my prompt is very simple:</p>
 <blockquote>
-<p>Per @user-favorite-color.md, implement the first step.</p>
+<p>Per @user-favorite-color.md, implement the next step.</p>
 </blockquote>
 <p><em>Note:</em> Since the spec is fairly detailed, I don't need to waste a lot of thinking
 tokens on this task. Therefore I can safely fall back to a simpler model like
@@ -265,17 +267,18 @@ tokens on this task. Therefore I can safely fall back to a simpler model like
 <p><em>Justification:</em> It's tempting to treat the agent like a coworker and correct it
 when it makes a mistake. This works for very minor corrections, but if the agent
 is really going down the wrong path, asking it to undo changes and take a
-different approach leaves it with a large amount of its limited context window
-consumed with invalid history that the model now has to actively ignore.
+different approach actually consumes more of the agent's limited context window
+with incorrect reasoning and details that the model now has to actively ignore.
 Performance on the second try invariably suffers.</p>
 <p>Unlike your coworker, the agent will not feel offended if you revert all their
-changes yourself and try again: you might clarify your prompt to avoid a
+changes yourself and start over: you might clarify your prompt to avoid a
 particular stumbling block, or you might make changes to ambiguous points in the
 spec. If you are using rules files in your project, you might add new guidance
 there as well. Sometimes due to the non-deterministic nature of the model,
 simply retrying the same exact prompt will lead to a better result!</p>
-<p>Some agenting coding tools have built-in support for rolling back to the last
-prompt or rejecting all changes. If your tool does not have this feature, I
+<p>This approach relies on making small changes in each prompt to checkpoint often,
+and on support from your agenting coding tool for rolling back to the last
+prompt / rejecting all changes. If your tool does not have this feature, I
 suggest committing to source control after each successful step so you have a
 checkpoint to roll back to. You can always squash the commits later.</p>
 <h2>💡 Idea #5: At the end of every implementation step, let the agent update the spec and start a new chat session.</h2>
