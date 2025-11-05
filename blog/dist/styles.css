@@ -80,26 +80,26 @@ svg#logo #stop938 {
     stop-color: #c0c0d1;
 }
 svg#logo #stop940 {
-    stop-color:#fcfbfb;
+    stop-color: #fcfbfb;
 }
 svg#logo #logorect1 {
     stroke: #574c60;
 }
 svg#logo #logorect2 {
-    stroke:#312b36;
+    stroke: #312b36;
 }
 @media (prefers-color-scheme: light) {
     svg#logo #stop938 {
         stop-color: #30302e;
     }
     svg#logo #stop940 {
-        stop-color:#030404;
+        stop-color: #030404;
     }
     svg#logo #logorect1 {
         stroke: #a893b9;
     }
     svg#logo #logorect2 {
-        stroke:#c2aad6;
+        stroke: #c2aad6;
     }
 }
 
@@ -152,7 +152,7 @@ header nav > a img {
     filter: brightness(80%);
 }
 header nav > a img:hover {
-    filter: brightness(100%);    
+    filter: brightness(100%);
 }
 header nav > a label {
     display: block;
@@ -164,7 +164,7 @@ header nav ul {
     width: 320px;
     background-color: var(--color-bg-contrast);
     visibility: hidden;
-    transition: opacity 0.3s;     
+    transition: opacity 0.3s;
     opacity: 0;
     margin: 0;
     padding: 16px 32px;
@@ -215,12 +215,15 @@ header nav:focus-within > ul {
 p {
     width: 100%;
 }
-p:target, li:target {
+p:target,
+li:target {
     border: 2px solid var(--color-highlight);
     border-radius: 4px;
 }
 
-p,ul,ol {
+p,
+ul,
+ol {
     font-family: "Inter Tight", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -358,23 +361,28 @@ blockquote p {
     font-weight: 200;
 }
 
-img, video {
+img,
+video {
     max-width: 1000px;
 }
 @media (max-width: 1240px) {
-    img, video {
+    img,
+    video {
         max-width: calc(100vw - 240px);
     }
 }
-img.article-width, video.article-width {
+img.article-width,
+video.article-width {
     width: 100%;
 }
-img.article-centered, video.article-centered {
+img.article-centered,
+video.article-centered {
     margin: 0 auto;
     display: block;
 }
 @media (max-width: 740px) {
-    img, video {
+    img,
+    video {
         max-width: 100%;
     }
 }
@@ -409,7 +417,8 @@ div.footnote li {
 div.annotation-pane p {
     padding: 4px;
 }
-div.annotation-pane p, div.footnote p {
+div.annotation-pane p,
+div.footnote p {
     margin: 0;
     overflow: hidden;
     font-size: 14px;
@@ -418,6 +427,11 @@ div.annotation-pane p, div.footnote p {
 }
 div.annotation-pane .footnote-backref {
     display: none;
+}
+div.annotation-pane p img,
+div.footnote p img {
+    max-width: 250px;
+    display: block;
 }
 
 ul.post-list {
@@ -432,7 +446,7 @@ ul.post-list li {
 ul.post-list li a {
     color: var(--color-link-desat);
 }
-    
+
 div.copyright {
     font-size: 12pt;
     color: var(--color-fg-mid);
@@ -443,19 +457,19 @@ div.copyright {
 /* Progress bar */
 
 header {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
 }
 .progress-container {
-  width: 100%;
-  height: 8px;
-  background: var(--color-bg);
+    width: 100%;
+    height: 8px;
+    background: var(--color-bg);
 }
 .progress-bar {
-  height: 4px;
-  background: var(--color-highlight);
-  width: 0%;
+    height: 4px;
+    background: var(--color-highlight);
+    width: 0%;
 }

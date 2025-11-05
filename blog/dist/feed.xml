@@ -15,6 +15,12 @@
   </image>
   
   <item>
+    <title>"Flow" in software development is overrated</title>
+    <link>https://www.arguingwithalgorithms.com/posts/flow-is-overrated.html</link>
+    <description>Tackling the myth that "flow" is critical for software development. Decided not to go with the obvious "Flow considered harmful" title. You're welcome.</description>
+    <pubDate>Wed, 05 Nov 2025 00:00:00 </pubDate>
+  </item>
+  <item>
     <title>How to keep your AI coding agent from going rogue</title>
     <link>https://www.arguingwithalgorithms.com/posts/technical-design-spec-pattern.html</link>
     <description>Complete agentic LLM coding projects reliably with this proven workflow.</description>
