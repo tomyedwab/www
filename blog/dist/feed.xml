@@ -15,6 +15,12 @@
   </image>
   
   <item>
+    <title>My coding philosophy</title>
+    <link>https://www.arguingwithalgorithms.com/posts/my-coding-philosophy.html</link>
+    <description>Sharing my philosophy of software development and my hopes for the future of our craft.</description>
+    <pubDate>Tue, 13 Jan 2026 00:00:00 </pubDate>
+  </item>
+  <item>
     <title>"Flow" in software development is overrated</title>
     <link>https://www.arguingwithalgorithms.com/posts/flow-is-overrated.html</link>
     <description>Tackling the myth that "flow" is critical for software development. Decided not to go with the obvious "Flow considered harmful" title. You're welcome.</description>

@@ -3,23 +3,24 @@ Subtitle: Written January 13, 2026
 Description: Sharing my philosophy of software development and my hopes for the future of our craft.
 Modified: 2026-01-13
 
-In college, I took a part time job working on the website for the Haas School of
+In college, I held a part time job working on the website for the Haas School of
 Business at UC Berkeley. This mostly consisted of odd maintenance work, but one
 regular task I was assigned was to take the weekly newsletter email and reformat
-it into HTML for the website. The task took an hour or so each week and was a
-bit tedious, so naturally after a few weeks I spent a few hours of my own time
-to automate it. Luckily, I didn't fall into this trap:
+it into HTML for publishing on the website. The task took an hour or so each
+week and was a bit tedious, so naturally after a few weeks I spent a few hours
+of my own time to automate it. Luckily, I didn't fall into this trap[^1]:
 
-![A link to xkcd #1319: Automation](https://xkcd.com/1319){ .article-centered }
+![xkcd #1319: Automation](https://imgs.xkcd.com/comics/automation.png){ .article-centered }
 
-What I like about this particular xkcd comic is that it captures the lengths
-some of us are willing to go to save a small amount of boring, repetitive work.
-I am in this picture, and to be honest I'm cool with it. In this instance I was
-able to shave the time down to about 5 minutes of copy-pasting from the email
-into a web form, and out popped the fully formatted HTML. This is not an
-impressive technical feat, but I think it captures my personal philosphy pretty
-well and explains why I got into programming computer software in the first
-place.
+[^1]: [xkcd #1319: Automation](https://xkcd.com/1319)
+
+What I like about this particular comic is that it captures the lengths some of
+us are willing to go to save a small amount of boring, repetitive work. I am in
+this picture, and to be honest I'm cool with it. With my script I was able to
+shave the time down to about 5 minutes of copy-pasting from the email into a web
+form, and out popped the fully formatted HTML. This is not an impressive
+technical feat, but I think it captures my personal philosphy pretty well and
+explains why I got into programming computer software in the first place.
 
 ## My personal philosophy of coding
 
@@ -47,10 +48,11 @@ For example, in Ye Olde Days a typical first-round technical interview question
 we used involved reversing a string efficiently. In C this can be done easily
 with a for loop, but isn't entirely trivial. However once the dominant languages
 became Python and Javascript the only sensible solution was to use the standard
-library, and the "solution" became a one-liner. We constantly build new
-abstractions to reduce the code required to get from Idea to Implementation with
-a minimum of bother, and as a result we can build software today at a scale that
-would have been inconceivable thirty years ago.
+library, and the "solution" became a one-liner and thus no longer a useful
+interview question. We constantly build new abstractions to reduce the code
+required to get from Idea to Implementation with a minimum of effort, and as a
+result we can build software today at a scale that would have been inconceivable
+thirty years ago.
 
 Not all abstractions are good, however: _leaky_ abstractions promise to remove the
 busywork of having to understand the implementation details of a framework only
@@ -71,7 +73,7 @@ units. And if you start with a bad human process, automating it just leads to
 worse outcomes. If time was an important asset when I started coding, it has
 become so much more precious to the older, more responsible me, and I'm not
 going to spend it perfecting code that already solves the problem at hand, and
-even more so perfecting code that solves no problem at all.
+I am even less enthusiastic about perfecting code that solves no problem at all.
 
 When faced with a new technology, new framework, new language, or new process, I
 ask myself: Can this help me get from identifying an inefficiency to solving it
@@ -102,9 +104,9 @@ making sure the features they launch are actually improving the product in a
 meaningful way for users. What I am excited about is the ability to try out
 ideas more quickly, throw together prototypes, launch a bunch of experiments out
 into the world to gather feedback and then make decisions based on actual
-real-world usage and user sentiment. I don't expect VC-backed, growth-focused
-startups to change their culture, but a new breed of startups could outcompete
-them.
+real-world usage and user sentiment. I'm not naive: I don't expect VC-backed,
+growth-focused startups to change their culture, but it is possible a new breed
+of customer-experience-focused startups could outcompete them.
 
 I know not everyone who writes code for a living and is accustomed to the status
 quo will be happy with this style of development. But for me, the act of writing
