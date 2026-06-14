@@ -50,5 +50,9 @@
   "the-eighteen-hour-application.json": {
     "cid": "bafyreic67iwyjom4k7ot25yesuskn22a3daz5hcprg67arla4t7k2n36ta",
     "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqzco5wz2o"
+  },
+  "lay-the-cornerstone-yourself.json": {
+    "cid": "bafyreignn6n4vdawtvbg3awurrkpnzpoeznccqcumr3bsue6nee54tmvdy",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobrymy2i52a"
   }
 }

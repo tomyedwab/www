@@ -119,6 +119,7 @@ def build_index():
         .replace("$$BODY$$", text)
         .replace("$$TITLE$$", "Post history")
         .replace("$$SUBTITLE$$", "")
+        .replace("$$LINK$$", "")
         .replace(
             "$$DESCRIPTION$$",
             "History of blog posts on the Arguing with Algorithms blog.",

@@ -1,7 +1,8 @@
 Title: Lay the cornerstone yourself
-Subtitle: Written May 21, 2026
-Description: <TODO>
-Modified: 2026-05-21
+Subtitle: Written June 14, 2026
+Description: As starting projects becomes easier than ever, it's never been more important to pay careful attention to the foundations and not let the AI make all the decisions for you.
+Modified: 2026-06-14
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobrymy2i52a
 
 > A **cornerstone** (or **foundation stone** or **setting stone**) is the first stone set in the construction of a masonry foundation. All other stones will be set in reference to this stone, thus determining the position of the entire structure.[^1]
 
@@ -23,11 +24,14 @@ future work will be to replicate and extend the patterns already laid down. Like
 a wheel in a rut, existing conventions define the default path, and any
 deviation requires significant effort.
 
-You might be skeptical about the link between these patterns and code quality.
-For years I have been thinking about the "Pit of Success"[^2]: the thesis that
-good architectural patterns make it easiest to do the right thing by default.
-It takes time and care to identify the failure points and come up with safer
-patterns.
+You might be skeptical about the link between the "path of least resistance"
+patterns in the codebase on one hand and code quality on the other. One idea
+that has stuck in my head for years is the concept of a "Pit of Success"[^2]:
+a particular architectural solution that, if you can find it, makes it easier to
+do the right thing by default and harder to do the wrong thing. The key insight
+is that the naïve design is almost never a pit of success: it takes careful
+thought and time to identify the failure modes and put the metaphorical bumpers
+in place.
 
 [^2]: As I heard about it from Jeff Atwood, ["Falling Into The Pit of Success"](https://blog.codinghorror.com/falling-into-the-pit-of-success/)
 
@@ -37,18 +41,21 @@ deployed services. We spent the first few months of the project iterating on a
 single trivial service, thinking through the specifics of deployment, routing,
 caching, local development, linting, etc. Nailing everything down in detail
 meant that when we were ready to start migrating code in massive quantities, the
-codebases owned by different teams looked similar to each other and the work
-could happen in parallel. Compared to the decisions made during those few
-months, any decision to change the patterns now would require gargantuan effort.
+codebases owned by different teams ended up looking very similar to each other
+even though the work was happening in parallel. Compared to the decisions made
+during those few months, any decision to change the patterns later on would
+require gargantuan effort.
 
-## Relevance for AI Coding
+## Relevance for AI coding
 
-I promised AI Coding Best Practices, and so far I've only talked about
-engineering best practices. This is going to be a running theme: the benefits of
-many existing best practices are amplified, not undermined, when onboarding AI
-Coding agents onto your team. The way it manifests here is that, while AI agents
-are incredible at taking green-field projects from nothing to something, you
-should _not_ rely on them to create good patterns for your project to follow.
+So far I've only talked about engineering best practices, but as with all such
+things this principle is even more critical now that AI has greased the wheels.
+This is going to be a running theme on this blog: the benefits of many existing
+best practices are amplified, not undermined, when onboarding AI coding agents
+onto your team. The way it manifests here is that, while AI agents are
+incredible at taking green-field projects from nothing to something, you should
+_not_ rely on them to create good patterns for your project to follow.
+
 While you can certainly prompt an agent to write a bunch of the initial
 boilerplate for you, if you aren't careful it will tend to also make spot
 decisions about:
