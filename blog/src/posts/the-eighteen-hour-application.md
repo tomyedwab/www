@@ -2,6 +2,7 @@ Title: The eighteen hour application: The project AI made possible
 Subtitle: Written Febraury 5, 2025
 Description: How I used AI tools to write a personal application from scratch in 18 hours.
 Modified: 2025-02-05
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqzco5wz2o
 
 If you are reading this in February 2025, you are probably wrong about the
 impact AI coding tools (a.k.a. Large Language Models instructed to imitate

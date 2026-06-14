@@ -2,6 +2,7 @@ Title: Reinventing the wheel: A new content store for Khan Academy
 Subtitle: Written January 3, 2014
 Description: Writing an educational content management system from scratch, part 1
 Modified: 2024-10-27
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqlahmsg23
 
 Over the past two years, I've been working largely behind the scenes at Khan
 Academy on the infrastructure the content team uses to upload and publish

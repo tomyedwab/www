@@ -1,0 +1,8 @@
+{
+  "$type": "site.standard.document",
+  "site": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.publication/3moboprwkxn2r",
+  "title": "\"Flow\" in software development is overrated",
+  "path": "/posts/flow-is-overrated.html",
+  "description": "Tackling the myth that \"flow\" is critical for software development. Decided not to go with the obvious \"Flow considered harmful\" title. You're welcome.",
+  "publishedAt": "2025-11-05T00:00:00.000Z"
+}

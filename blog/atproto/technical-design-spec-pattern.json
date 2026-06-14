@@ -1,0 +1,8 @@
+{
+  "$type": "site.standard.document",
+  "site": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.publication/3moboprwkxn2r",
+  "title": "How to keep your AI coding agent from going rogue",
+  "path": "/posts/technical-design-spec-pattern.html",
+  "description": "Complete agentic LLM coding projects reliably with this proven workflow.",
+  "publishedAt": "2025-06-20T00:00:00.000Z"
+}

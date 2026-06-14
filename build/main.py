@@ -1,24 +1,29 @@
 import datetime
+import os.path
+import sys
+import xml.etree.ElementTree as etree
+
 import markdown
 from markdown.blockprocessors import BlockProcessor
 from markdown.extensions import Extension
 from markdown.postprocessors import Postprocessor
 from markdown.treeprocessors import Treeprocessor
-import os.path
-import sys
-import xml.etree.ElementTree as etree
 
 PostMetadatas = {}
+
 
 class WrapInArticleTreeProcessor(Treeprocessor):
     def run(self, root):
         body_els = [
-            child for child in root if child.tag != 'div' or child.get('class') != 'title-underline'
+            child
+            for child in root
+            if child.tag != "div" or child.get("class") != "title-underline"
         ]
-        article = etree.SubElement(root, 'article')
+        article = etree.SubElement(root, "article")
         for child in body_els:
             root.remove(child)
             article.append(child)
+
 
 class ApplyTemplatePostprocesor(Postprocessor):
     def __init__(self, md, post_uri):
@@ -28,44 +33,63 @@ class ApplyTemplatePostprocesor(Postprocessor):
     def run(self, text):
         PostMetadatas[self.post_uri] = {
             "uri": self.post_uri,
-            "title": self.md.Meta['title'][0],
-            "subtitle": self.md.Meta['subtitle'][0],
-            "description": self.md.Meta['description'][0],
-            "modified": self.md.Meta['modified'][0],
+            "title": self.md.Meta["title"][0],
+            "subtitle": self.md.Meta["subtitle"][0],
+            "description": self.md.Meta["description"][0],
+            "modified": self.md.Meta["modified"][0],
         }
+        link = ""
+        if len(self.md.Meta.get("did", [])) > 0:
+            link = (
+                f'<link rel="site.standard.document" href="{self.md.Meta["did"][0]}" />'
+            )
         with open("blog/src/template.html", "r") as file:
             template = file.read()
         return (
-            template
-            .replace('$$ROOT$$', "..")
-            .replace('$$BODY$$', text)
-            .replace('$$TITLE$$', self.md.Meta['title'][0])
-            .replace('$$SUBTITLE$$', self.md.Meta['subtitle'][0])
-            .replace('$$DESCRIPTION$$', self.md.Meta['description'][0])
+            template.replace("$$ROOT$$", "..")
+            .replace("$$BODY$$", text)
+            .replace("$$TITLE$$", self.md.Meta["title"][0])
+            .replace("$$SUBTITLE$$", self.md.Meta["subtitle"][0])
+            .replace("$$DESCRIPTION$$", self.md.Meta["description"][0])
+            .replace("$$LINK$$", link)
         )
+
 
 class BlogExtension(Extension):
     def __init__(self, post_uri):
         self.post_uri = post_uri
 
     def extendMarkdown(self, md):
-        md.treeprocessors.register(WrapInArticleTreeProcessor(md), 'article', 100)
-        md.postprocessors.register(ApplyTemplatePostprocesor(md, self.post_uri), 'template', 100)
+        md.treeprocessors.register(WrapInArticleTreeProcessor(md), "article", 100)
+        md.postprocessors.register(
+            ApplyTemplatePostprocesor(md, self.post_uri), "template", 100
+        )
+
 
 def build_post(path):
-    output_file = path.replace("blog/src/posts/", "blog/dist/posts/").replace(".md", ".html")
+    output_file = path.replace("blog/src/posts/", "blog/dist/posts/").replace(
+        ".md", ".html"
+    )
     print(f"Compiling {path} to {output_file}...")
 
     with open(path, "r") as file:
         content = file.read()
 
-    html = markdown.markdown(content, extensions=[BlogExtension(output_file[10:]), 'footnotes', 'meta', 'attr_list'])
+    html = markdown.markdown(
+        content,
+        extensions=[BlogExtension(output_file[10:]), "footnotes", "meta", "attr_list"],
+    )
 
     with open(output_file, "w") as file:
         file.write(html)
 
+
 def build_index():
-    post_uris = sorted(PostMetadatas.keys(), key=lambda uri: PostMetadatas[uri]["modified"] + uri, reverse=True)
+    post_uris = sorted(
+        PostMetadatas.keys(),
+        key=lambda uri: PostMetadatas[uri]["modified"] + uri,
+        reverse=True,
+    )
     text = """<article>
     <p class=\"feed-link\">
       <a href=\"feed.xml\"><img src=\"images/Feed-icon.svg\" alt=\"RSS feed\" width=\"32\" height=\"32\" />
@@ -85,35 +109,38 @@ def build_index():
                 saying 'well...'."></li>
             """
         post_metadata = PostMetadatas[post_uri]
-        text += f"<li><h2><a href=\"{post_metadata['uri']}\">{post_metadata['title']}</a></h2><p class=\"subtitle\">{post_metadata['subtitle']}</p><p>{post_metadata['description']}</p></li>\n"
+        text += f'<li><h2><a href="{post_metadata["uri"]}">{post_metadata["title"]}</a></h2><p class="subtitle">{post_metadata["subtitle"]}</p><p>{post_metadata["description"]}</p></li>\n'
     text += "</ul>\n</article>\n"
 
     with open("blog/src/template.html", "r") as file:
         template = file.read()
     html = (
-        template
-        .replace('$$ROOT$$', ".")
-        .replace('$$BODY$$', text)
-        .replace('$$TITLE$$', "Post history")
-        .replace('$$SUBTITLE$$', "")
-        .replace('$$DESCRIPTION$$', "History of blog posts on the Arguing with Algorithms blog.")
+        template.replace("$$ROOT$$", ".")
+        .replace("$$BODY$$", text)
+        .replace("$$TITLE$$", "Post history")
+        .replace("$$SUBTITLE$$", "")
+        .replace(
+            "$$DESCRIPTION$$",
+            "History of blog posts on the Arguing with Algorithms blog.",
+        )
     )
     with open("blog/dist/index.html", "w") as file:
         file.write(html)
+
 
 def build_error_page(code, title, message):
     with open("blog/src/template.html", "r") as file:
         template = file.read()
     html = (
-        template
-        .replace('$$ROOT$$', "")
-        .replace('$$BODY$$', message)
-        .replace('$$TITLE$$', title)
-        .replace('$$SUBTITLE$$', "")
-        .replace('$$DESCRIPTION$$', "")
+        template.replace("$$ROOT$$", "")
+        .replace("$$BODY$$", message)
+        .replace("$$TITLE$$", title)
+        .replace("$$SUBTITLE$$", "")
+        .replace("$$DESCRIPTION$$", "")
     )
     with open(f"blog/dist/errors/{code}.html", "w") as file:
         file.write(html)
+
 
 def build_sitemap():
     xml = """<?xml version="1.0" encoding="UTF-8"?>
@@ -129,6 +156,7 @@ def build_sitemap():
     xml += "</urlset>"
     with open("blog/dist/sitemap.xml", "w") as file:
         file.write(xml)
+
 
 def build_rss():
     rss = """<?xml version="1.0" encoding="UTF-8" ?>
@@ -147,21 +175,28 @@ def build_rss():
     <height>96</height>
   </image>
   """
-    post_uris = sorted(PostMetadatas.keys(), key=lambda uri: PostMetadatas[uri]["modified"] + uri, reverse=True)
+    post_uris = sorted(
+        PostMetadatas.keys(),
+        key=lambda uri: PostMetadatas[uri]["modified"] + uri,
+        reverse=True,
+    )
     for post_uri in post_uris:
         metadata = PostMetadatas[post_uri]
         # Parse YYYY-MM-DD from modified date and convert to RFC 822 format
-        modified = datetime.datetime.strptime(metadata['modified'], "%Y-%m-%d").strftime("%a, %d %b %Y %H:%M:%S %z")
+        modified = datetime.datetime.strptime(
+            metadata["modified"], "%Y-%m-%d"
+        ).strftime("%a, %d %b %Y %H:%M:%S %z")
         rss += f"""
   <item>
-    <title>{metadata['title']}</title>
+    <title>{metadata["title"]}</title>
     <link>https://www.arguingwithalgorithms.com/{post_uri}</link>
-    <description>{metadata['description']}</description>
+    <description>{metadata["description"]}</description>
     <pubDate>{modified}</pubDate>
   </item>"""
     rss += "\n</channel>\n</rss>"
     with open("blog/dist/feed.xml", "w") as file:
         file.write(rss)
+
 
 def build_all():
     for root, dirs, files in os.walk("blog/src/posts/"):
@@ -174,8 +209,9 @@ def build_all():
     build_error_page(
         404,
         "Oops! Page not found",
-        "<p><img src=\"/images/404.png\" alt=\"404 error\"></p><p>Oh no! The page you are looking for does not exist. Maybe have a look at the <a href=\"/\">post history page</a>?</p>",
+        '<p><img src="/images/404.png" alt="404 error"></p><p>Oh no! The page you are looking for does not exist. Maybe have a look at the <a href="/">post history page</a>?</p>',
     )
+
 
 def main(args):
     if args[0] == "dev":
@@ -183,7 +219,12 @@ def main(args):
         import http.server
         import threading
 
-        server = http.server.HTTPServer(('0.0.0.0', 8000), lambda *args: http.server.SimpleHTTPRequestHandler(*args, directory='blog/dist/'))
+        server = http.server.HTTPServer(
+            ("0.0.0.0", 8000),
+            lambda *args: http.server.SimpleHTTPRequestHandler(
+                *args, directory="blog/dist/"
+            ),
+        )
         server_thread = threading.Thread(target=server.serve_forever)
         server_thread.daemon = True
         server_thread.start()
@@ -191,12 +232,16 @@ def main(args):
         print("Server started at http://localhost:8000")
 
         import time
-        from watchdog.observers import Observer
+
         from watchdog.events import FileSystemEventHandler
+        from watchdog.observers import Observer
 
         class PostHandler(FileSystemEventHandler):
             def on_modified(self, event):
-                if event.src_path.endswith('.md') and 'blog/src/posts/' in event.src_path:
+                if (
+                    event.src_path.endswith(".md")
+                    and "blog/src/posts/" in event.src_path
+                ):
                     build_post(event.src_path)
                     build_index()
 
@@ -205,8 +250,10 @@ def main(args):
                 build_all()
 
         observer = Observer()
-        observer.schedule(PostHandler(), path='blog/src/posts/', recursive=False)
-        observer.schedule(TemplateHandler(), path='blog/src/template.html', recursive=False)
+        observer.schedule(PostHandler(), path="blog/src/posts/", recursive=False)
+        observer.schedule(
+            TemplateHandler(), path="blog/src/template.html", recursive=False
+        )
         observer.start()
 
         build_all()
@@ -225,6 +272,7 @@ def main(args):
         build_post(args[0])
     else:
         print("Usage: build.py <path/to/post.md>")
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

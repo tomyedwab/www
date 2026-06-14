@@ -1,0 +1,8 @@
+{
+  "$type": "site.standard.document",
+  "site": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.publication/3moboprwkxn2r",
+  "title": "The operation queue: A content editing pattern for JavaScript",
+  "path": "/posts/14-05-09-operation-queue.html",
+  "description": "Managing concurrent edits in a collaborative content management system.",
+  "publishedAt": "2024-10-27T00:00:00.000Z"
+}

@@ -2,6 +2,7 @@ Title: Overcoming the legacy roadblock
 Subtitle: Written April 8, 2025
 Description: Legacy codebases are the bane of AI tools. How can we overcome this?
 Modified: 2025-04-08
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqvbwjuj2p
 
 > Staff Software Engineer, noun: An IT professional who over a long career has developed strong opinions about legacy codebases.
 

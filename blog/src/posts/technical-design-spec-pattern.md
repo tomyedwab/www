@@ -2,6 +2,7 @@ Title: How to keep your AI coding agent from going rogue
 Subtitle: Written May 20, 2025
 Description: Complete agentic LLM coding projects reliably with this proven workflow.
 Modified: 2025-06-20
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqxe3gci2z
 
 You fired up Windsurf, or Copilot, or Cursor. You got comfortable with tab
 autocomplete, asking questions about your codebase, prompting AI to write a few

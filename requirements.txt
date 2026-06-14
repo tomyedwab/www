@@ -1,2 +1,4 @@
 markdown==3.7
 watchdog==5.0.3
+atproto==0.0.68
+python-dotenv==1.2.2

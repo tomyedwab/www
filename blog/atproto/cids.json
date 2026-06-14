@@ -1,0 +1,54 @@
+{
+  "blog.json": {
+    "cid": "bafyreib6lfg7zx67sumg7jnukw5r2ybxxnp5ehu6tegwqnub3zlwugfdii",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.publication/3moboprwkxn2r"
+  },
+  "12-05-02-progress.json": {
+    "cid": "bafyreiglxtt42xw6dbvw7chonrvcd6kfkk3rnsefgt35gtorxb2zw5fgfm",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobpq4o62p23"
+  },
+  "12-10-09-back-to-work.json": {
+    "cid": "bafyreicqpaiz2swvjgowudu7qm73zcjis7dic2b255krn6etgm4iwjp3pu",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqckbmwz2p"
+  },
+  "13-03-14-code-reviews.json": {
+    "cid": "bafyreifgurdp45wy24kc5dsw7ur3yz5d7wg3s4ycmrnt6dyxj2bil3pd7a",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqf6wvgq2z"
+  },
+  "14-01-03-content-implementation.json": {
+    "cid": "bafyreiahzprwlf2xy2mfsrgmeagkhgbmsanhsqfufvye66slhwyrbkkijy",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqhkmbaj2h"
+  },
+  "14-01-03-content-store.json": {
+    "cid": "bafyreib5x3mubem4tpjnb6mxm3avgdbekqzg2elnxo6lz6exjcc45pkyne",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqlahmsg23"
+  },
+  "14-05-09-operation-queue.json": {
+    "cid": "bafyreievzrnrbatf7ucxpakok63irkyqpc5qsizfvhhd7lw4mggldt4nfe",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqnej4re2w"
+  },
+  "14-12-02-architecture-reviews.json": {
+    "cid": "bafyreia44u3vrbvvvu3vzmtfqx5wmrb7feen76q4idakw34jnuylr6fcf4",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqp6qum42w"
+  },
+  "cursor-review.json": {
+    "cid": "bafyreiaosrlqtklsxmy6mvqt2nknhcerzbx56252pl5fk6ibio2kbmemwq",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqr6lthm26"
+  },
+  "flow-is-overrated.json": {
+    "cid": "bafyreickiqf44tm5xrqq6u6ymdf7zspb4kx2ohcgekyw2scyfe7jgc6ufy",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqtlopw52o"
+  },
+  "legacy-codebases.json": {
+    "cid": "bafyreidfzexfzwdfflngdbxxxhgrzeruczr47q7mhacdoenouh7obvxqhi",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqvbwjuj2p"
+  },
+  "technical-design-spec-pattern.json": {
+    "cid": "bafyreie42daklgadkv4msogby77zkjh64ts3p42m7oqdemfepoo53uvydy",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqxe3gci2z"
+  },
+  "the-eighteen-hour-application.json": {
+    "cid": "bafyreic67iwyjom4k7ot25yesuskn22a3daz5hcprg67arla4t7k2n36ta",
+    "uri": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqzco5wz2o"
+  }
+}

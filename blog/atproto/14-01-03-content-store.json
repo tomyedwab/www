@@ -1,0 +1,8 @@
+{
+  "$type": "site.standard.document",
+  "site": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.publication/3moboprwkxn2r",
+  "title": "Reinventing the wheel: A new content store for Khan Academy",
+  "path": "/posts/14-01-03-content-store.html",
+  "description": "Writing an educational content management system from scratch, part 1",
+  "publishedAt": "2024-10-27T00:00:00.000Z"
+}

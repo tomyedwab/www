@@ -2,6 +2,7 @@ Title: Implementation: A new content store for Khan Academy
 Subtitle: Written January 3, 2014
 Description: Writing an educational content management system from scratch, part 2
 Modified: 2024-10-27
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqhkmbaj2h
 
 This article provides more implementation details for our versioned content
 store. To see the motivating challenges and overall design for building a

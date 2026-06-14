@@ -1,0 +1,8 @@
+{
+  "$type": "site.standard.document",
+  "site": "at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.publication/3moboprwkxn2r",
+  "title": "Architecture vs. Implementation Reviews",
+  "path": "/posts/14-12-02-architecture-reviews.html",
+  "description": "Differentiating between two different flavors of code reviews.",
+  "publishedAt": "2024-10-27T00:00:00.000Z"
+}

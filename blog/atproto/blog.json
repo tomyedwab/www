@@ -1,0 +1,44 @@
+{
+  "$type": "site.standard.publication",
+  "url": "https://www.arguingwithalgorithms.com",
+  "icon": {
+    "$type": "blob",
+    "ref": {
+      "$link": "bafkreigauzvkkg6dzm4hmzysmu4qkw3uh5dp7sudc6g4pylgcfg2hhveiq"
+    },
+    "mimeType": "image/png",
+    "size": 6250
+  },
+  "name": "Arguing with Algorithms",
+  "description": "Software engineering and technology blog by Tom Yedwab",
+  "preferences": {
+    "showInDiscover": true
+  },
+  "basicTheme": {
+    "$type": "site.standard.theme.basic",
+    "background": {
+      "r": 23,
+      "g": 19,
+      "b": 19,
+      "$type": "site.standard.theme.color#rgb"
+    },
+    "foreground": {
+      "r": 252,
+      "g": 251,
+      "b": 251,
+      "$type": "site.standard.theme.color#rgb"
+    },
+    "accent": {
+      "r": 17,
+      "g": 15,
+      "b": 15,
+      "$type": "site.standard.theme.color#rgb"
+    },
+    "accentForeground": {
+      "r": 240,
+      "g": 187,
+      "b": 97,
+      "$type": "site.standard.theme.color#rgb"
+    }
+  }
+}

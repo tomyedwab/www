@@ -2,6 +2,7 @@ Title: "Flow" in software development is overrated
 Subtitle: Written November 5, 2025
 Description: Tackling the myth that "flow" is critical for software development. Decided not to go with the obvious "Flow considered harmful" title. You're welcome.
 Modified: 2025-11-05
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqtlopw52o
 
 I might not endear myself to my software engineering colleagues with this post,
 but even if mine is a minority opinion I think it's worth stating:

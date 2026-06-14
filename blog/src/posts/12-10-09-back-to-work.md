@@ -2,6 +2,7 @@ Title: Going Back to Work
 Subtitle: Written October 9, 2012
 Description: A personal story of returning to work after becoming a father.
 Modified: 2024-10-27
+Did: at://did:plc:k27kugtlg3jgnyqbrmr2wnbk/site.standard.document/3mobqckbmwz2p
 
 ## Birth
 
